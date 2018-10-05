@@ -1,6 +1,6 @@
 ## SciTail Evaluator
 
-This script evaluates predictions for the entailment of a SciTail Entailment Pair, and produces an accuracy score.
+This script evaluates predictions on the SciTail dataset and produces an accuracy score.
 
 ## Example
 
