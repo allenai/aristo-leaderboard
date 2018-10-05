@@ -16,17 +16,17 @@ VALID_PREDICTION_VALUES = ['E', 'N']
 def calculate_accuracy(answers: Dict[str, str], predictions: Dict[str, str]) -> float:
     score = 0.0
 
-    for question_id, answer in answers.items():
+    for entailment_pair_id, answer in answers.items():
         try:
-            predictions_for_q = predictions[question_id]
+            predictions_for_q = predictions[entailment_pair_id]
         except KeyError:
-            logging.error("Missing prediction for question '%s'.", question_id)
+            logging.error("Missing prediction for entailment pair '%s'.", entailment_pair_id)
             sys.exit(EXIT_STATUS_PREDICTION_MISSING)
 
         if answer in predictions_for_q:
             score += 1
 
-        del predictions[question_id]
+        del predictions[entailment_pair_id]
 
     if len(predictions) > 0:
         logging.error("Found %d extra predictions, for example: %s", len(predictions),
@@ -48,13 +48,13 @@ def read_answers(filename: str) -> Dict[str, str]:
                 logging.error("Error while reading file %s: %s", filename, e)
                 sys.exit(EXIT_STATUS_ANSWERS_MALFORMED)
 
-            question_id = record["id"]
+            entailment_pair_id = record["id"]
             answer = record["gold_label"]
 
-            if question_id in answers:
-                logging.error("Key %s repeated in %s", question_id, filename)
+            if entailment_pair_id in answers:
+                logging.error("Key %s repeated in %s", entailment_pair_id, filename)
                 sys.exit(EXIT_STATUS_ANSWERS_MALFORMED)
-            answers[question_id] = answer
+            answers[entailment_pair_id] = answer
 
     if len(answers) == 0:
         logging.error("No answers found in file %s", filename)
