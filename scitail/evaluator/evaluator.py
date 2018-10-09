@@ -123,8 +123,7 @@ def main():
         required=True)
     parser.add_argument(
         '--output', '-o',
-        help='Output results to this file.',
-        required=True)
+        help='Output results to this file.')
 
     args = parser.parse_args()
 
@@ -132,8 +131,12 @@ def main():
     predictions = read_predictions(args.predictions)
     accuracy = calculate_accuracy(answers, predictions)
 
-    with open(args.output, "wt", encoding="UTF-8") as output:
-        output.write(json.dumps({"accuracy": accuracy}))
+    if args.output:
+        print("Writing results to file: %s" % args.output)
+        with open(args.output, "wt", encoding="UTF-8") as output:
+            output.write(json.dumps({"accuracy": accuracy}))
+    else:
+        print("accuracy:", accuracy)
 
 
 if __name__ == '__main__':
