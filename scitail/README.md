@@ -7,13 +7,13 @@
 To evaluate dummy predictions (every pair of sentences is predicted to entail) against the SciTail dataset, run this:
 
 ```
-% python3 evaluator/evaluator.py -a data/test/answers.jsonl -p data/test/predictions.csv -o metrics.json 
+% python3 evaluator/evaluator.py -a data/test/answers.jsonl -p data/test/dummy-predictions.csv -o metrics.json
 
 % cat metrics.json
 {"accuracy": 0.39604891815616183}
 ```
 
-Replace `data/test/predictions.csv` with your predictions to compute your test score. 
+Replace `data/test/dummy-predictions.csv` with your predictions to compute your test score.
 
 You can also predictions against the Dev set by running:
 
