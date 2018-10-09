@@ -13,7 +13,7 @@ accuracy: 0.39604891815616183
 
 Replace `data/test/dummy-predictions.csv` with your predictions to compute your test score.
 
-You can also predictions against the Dev set by running:
+You can also evaluate predictions against the Dev set by running:
 
 ```
 % python3 evaluator/evaluator.py -a data/dev/answers.jsonl -p data/dev/dummy-predictions.csv
