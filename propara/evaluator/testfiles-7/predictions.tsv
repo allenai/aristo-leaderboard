@@ -1,0 +1,1820 @@
+927	1	rain	MOVE	?	there
+927	2	rain	MOVE	there	ground
+927	3	rain	NONE	ground	ground
+927	4	rain	MOVE	ground	soil
+927	5	rain	DESTROY	soil	-
+927	6	rain	NONE	-	-
+927	1	plant	NONE	-	-
+927	2	plant	NONE	-	-
+927	3	plant	NONE	-	-
+927	4	plant	NONE	-	-
+927	5	plant	NONE	-	-
+927	6	plant	CREATE	-	soil
+927	1	tree	NONE	-	-
+927	2	tree	NONE	-	-
+927	3	tree	NONE	-	-
+927	4	tree	NONE	-	-
+927	5	tree	NONE	-	-
+927	6	tree	NONE	-	-
+927	1	land	NONE	-	-
+927	2	land	NONE	-	-
+927	3	land	NONE	-	-
+927	4	land	NONE	-	-
+927	5	land	NONE	-	-
+927	6	land	NONE	-	-
+927	1	rain water	NONE	there	there
+927	2	rain water	MOVE	there	ground
+927	3	rain water	MOVE	ground	soil
+927	4	rain water	NONE	soil	soil
+927	5	rain water	DESTROY	soil	-
+927	6	rain water	NONE	-	-
+927	1	water	MOVE	there	ground
+927	2	water	NONE	ground	ground
+927	3	water	MOVE	ground	soil
+927	4	water	NONE	soil	soil
+927	5	water	DESTROY	soil	-
+927	6	water	NONE	-	-
+1240	1	heat	NONE	fan	fan
+1240	2	heat	NONE	fan	fan
+1240	3	heat	DESTROY	fan	-
+1240	4	heat	CREATE	-	condenser
+1240	5	heat	NONE	condenser	condenser
+1240	6	heat	DESTROY	condenser	-
+1240	7	heat	CREATE	-	condenser
+1240	8	heat	DESTROY	condenser	-
+1240	1	liquid	NONE	-	-
+1240	2	liquid	NONE	-	-
+1240	3	liquid	CREATE	-	gas
+1240	4	liquid	NONE	gas	gas
+1240	5	liquid	MOVE	gas	condenser
+1240	6	liquid	DESTROY	condenser	-
+1240	7	liquid	NONE	-	-
+1240	8	liquid	CREATE	-	evaporator
+1240	1	air	MOVE	?	evaporator 's coil
+1240	2	air	MOVE	evaporator 's coil	absorb
+1240	3	air	MOVE	absorb	gas
+1240	4	air	MOVE	gas	gas . the compressor
+1240	5	air	MOVE	gas . the compressor	condenser
+1240	6	air	NONE	condenser	condenser
+1240	7	air	DESTROY	condenser	-
+1240	8	air	NONE	-	-
+932	1	rock	CREATE	-	water
+932	2	rock	DESTROY	water	-
+932	3	rock	CREATE	-	water
+932	4	rock	MOVE	water	different kind
+932	5	rock	MOVE	different kind	air
+932	6	rock	MOVE	air	different kind
+932	1	chemical	NONE	-	-
+932	2	chemical	CREATE	-	water
+932	3	chemical	DESTROY	water	-
+932	4	chemical	NONE	-	-
+932	5	chemical	NONE	-	-
+932	6	chemical	NONE	-	-
+932	1	water	MOVE	?	rock
+932	2	water	MOVE	rock	react
+932	3	water	DESTROY	react	-
+932	4	water	NONE	-	-
+932	5	water	NONE	-	-
+932	6	water	NONE	-	-
+932	1	oxygen	NONE	-	-
+932	2	oxygen	NONE	-	-
+932	3	oxygen	NONE	-	-
+932	4	oxygen	CREATE	-	water
+932	5	oxygen	MOVE	water	air react with rock
+932	6	oxygen	MOVE	air react with rock	air
+933	1	rock	NONE	-	-
+933	2	rock	NONE	-	-
+933	3	rock	NONE	-	-
+933	4	rock	CREATE	-	material
+933	5	rock	DESTROY	material	-
+933	1	carbon dioxide	MOVE	?	water
+933	2	carbon dioxide	DESTROY	water	-
+933	3	carbon dioxide	NONE	-	-
+933	4	carbon dioxide	NONE	-	-
+933	5	carbon dioxide	NONE	-	-
+933	1	mineral base material	NONE	-	-
+933	2	mineral base material	NONE	-	-
+933	3	mineral base material	CREATE	-	water seep
+933	4	mineral base material	MOVE	water seep	rock
+933	5	mineral base material	MOVE	rock	acidity
+933	1	water	DESTROY	?	-
+933	2	water	NONE	-	-
+933	3	water	CREATE	-	mineral base material
+933	4	water	MOVE	mineral base material	rock
+933	5	water	DESTROY	rock	-
+1033	1	rock	NONE	-	-
+1033	2	rock	NONE	-	-
+1033	3	rock	NONE	-	-
+1033	4	rock	CREATE	-	mud
+1033	5	rock	NONE	mud	mud
+1033	6	rock	DESTROY	mud	-
+1033	1	skeleton	NONE	-	-
+1033	2	skeleton	NONE	-	-
+1033	3	skeleton	NONE	-	-
+1033	4	skeleton	NONE	-	-
+1033	5	skeleton	NONE	-	-
+1033	6	skeleton	CREATE	-	mud
+1033	1	animal	DESTROY	?	-
+1033	2	animal	CREATE	-	mud
+1033	3	animal	MOVE	mud	body
+1033	4	animal	MOVE	body	rock
+1033	5	animal	DESTROY	rock	-
+1033	6	animal	NONE	-	-
+1033	1	mold	NONE	-	-
+1033	2	mold	NONE	-	-
+1033	3	mold	NONE	-	-
+1033	4	mold	NONE	-	-
+1033	5	mold	NONE	-	-
+1033	6	mold	CREATE	-	mud
+1032	1	rock	NONE	-	-
+1032	2	rock	NONE	-	-
+1032	3	rock	NONE	-	-
+1032	4	rock	NONE	-	-
+1032	5	rock	NONE	-	-
+1032	6	rock	CREATE	-	mud
+1032	1	plant	MOVE	most	wet environment
+1032	2	plant	DESTROY	wet environment	-
+1032	3	plant	NONE	-	-
+1032	4	plant	NONE	-	-
+1032	5	plant	NONE	-	-
+1032	6	plant	NONE	-	-
+1032	1	animal	CREATE	-	environment
+1032	2	animal	DESTROY	environment	-
+1032	3	animal	NONE	-	-
+1032	4	animal	NONE	-	-
+1032	5	animal	NONE	-	-
+1032	6	animal	NONE	-	-
+1032	1	remains	NONE	-	-
+1032	2	remains	NONE	-	-
+1032	3	remains	NONE	-	-
+1032	4	remains	NONE	-	-
+1032	5	remains	CREATE	-	period of time
+1032	6	remains	MOVE	period of time	rock
+1032	1	bone and hard tissue	NONE	-	-
+1032	2	bone and hard tissue	NONE	-	-
+1032	3	bone and hard tissue	CREATE	-	soft tissue
+1032	4	bone and hard tissue	MOVE	soft tissue	soft tissue decompose
+1032	5	bone and hard tissue	MOVE	soft tissue decompose	remains
+1032	6	bone and hard tissue	MOVE	remains	rock
+1032	1	sediment	NONE	-	-
+1032	2	sediment	NONE	-	-
+1032	3	sediment	NONE	-	-
+1032	4	sediment	NONE	-	-
+1032	5	sediment	CREATE	-	remains
+1032	6	sediment	DESTROY	remains	-
+1031	1	rock	NONE	-	-
+1031	2	rock	NONE	-	-
+1031	3	rock	NONE	-	-
+1031	4	rock	CREATE	-	mud
+1031	5	rock	DESTROY	mud	-
+1031	1	bone	MOVE	?	soil
+1031	2	bone	DESTROY	soil	-
+1031	3	bone	CREATE	-	sediment
+1031	4	bone	MOVE	sediment	sediment become rock
+1031	5	bone	DESTROY	sediment become rock	-
+1031	1	plant or animal	MOVE	?	mud or soil
+1031	2	plant or animal	NONE	mud or soil	mud or soil
+1031	3	plant or animal	NONE	mud or soil	mud or soil
+1031	4	plant or animal	DESTROY	mud or soil	-
+1031	5	plant or animal	NONE	-	-
+1031	1	fossil	NONE	-	-
+1031	2	fossil	NONE	-	-
+1031	3	fossil	NONE	-	-
+1031	4	fossil	NONE	-	-
+1031	5	fossil	CREATE	-	rock
+1031	1	sediment	NONE	-	-
+1031	2	sediment	NONE	-	-
+1031	3	sediment	CREATE	-	soil
+1031	4	sediment	DESTROY	soil	-
+1031	5	sediment	NONE	-	-
+1147	1	star	DESTROY	?	-
+1147	2	star	NONE	-	-
+1147	3	star	CREATE	-	atom
+1147	4	star	MOVE	atom	helium
+1147	5	star	MOVE	helium	star
+1147	6	star	MOVE	star	red giant
+1147	1	helium atom	NONE	hydrogen	hydrogen
+1147	2	helium atom	NONE	hydrogen	hydrogen
+1147	3	helium atom	MOVE	hydrogen	helium
+1147	4	helium atom	DESTROY	helium	-
+1147	5	helium atom	NONE	-	-
+1147	6	helium atom	NONE	-	-
+1147	1	hydrogen	MOVE	hydrogen	star
+1147	2	hydrogen	DESTROY	star	-
+1147	3	hydrogen	CREATE	-	star
+1147	4	hydrogen	DESTROY	star	-
+1147	5	hydrogen	NONE	-	-
+1147	6	hydrogen	NONE	-	-
+1147	1	helium	MOVE	?	hydrogen
+1147	2	helium	MOVE	hydrogen	helium
+1147	3	helium	MOVE	helium	star
+1147	4	helium	MOVE	star	atom
+1147	5	helium	NONE	atom	atom
+1147	6	helium	MOVE	atom	hydrogen atom in a star
+1147	1	hydrogen atom	MOVE	?	star
+1147	2	hydrogen atom	NONE	star	star
+1147	3	hydrogen atom	NONE	star	star
+1147	4	hydrogen atom	DESTROY	star	-
+1147	5	hydrogen atom	NONE	-	-
+1147	6	hydrogen atom	NONE	-	-
+1147	1	carbon atom	NONE	-	-
+1147	2	carbon atom	NONE	-	-
+1147	3	carbon atom	NONE	-	-
+1147	4	carbon atom	CREATE	-	helium
+1147	5	carbon atom	NONE	helium	helium
+1147	6	carbon atom	NONE	helium	helium
+1146	1	star	MOVE	?	space
+1146	2	star	NONE	space	space
+1146	3	star	NONE	space	space
+1146	4	star	NONE	space	space
+1146	5	star	NONE	space	space
+1146	6	star	MOVE	space	itself
+1146	7	star	MOVE	itself	helium
+1146	8	star	MOVE	helium	space
+1146	9	star	NONE	space	space
+1146	10	star	NONE	space	space
+1146	1	hydrogen fuel	NONE	-	-
+1146	2	hydrogen fuel	CREATE	-	space
+1146	3	hydrogen fuel	NONE	space	space
+1146	4	hydrogen fuel	NONE	space	space
+1146	5	hydrogen fuel	NONE	space	space
+1146	6	hydrogen fuel	NONE	space	space
+1146	7	hydrogen fuel	NONE	space	space
+1146	8	hydrogen fuel	NONE	space	space
+1146	9	hydrogen fuel	NONE	space	space
+1146	10	hydrogen fuel	NONE	space	space
+1146	1	hydrogen	NONE	-	-
+1146	2	hydrogen	CREATE	-	space
+1146	3	hydrogen	MOVE	space	helium
+1146	4	hydrogen	MOVE	helium	space
+1146	5	hydrogen	NONE	space	space
+1146	6	hydrogen	NONE	space	space
+1146	7	hydrogen	DESTROY	space	-
+1146	8	hydrogen	NONE	-	-
+1146	9	hydrogen	NONE	-	-
+1146	10	hydrogen	NONE	-	-
+1146	1	helium	NONE	-	-
+1146	2	helium	NONE	-	-
+1146	3	helium	CREATE	-	space
+1146	4	helium	NONE	space	space
+1146	5	helium	NONE	space	space
+1146	6	helium	NONE	space	space
+1146	7	helium	NONE	space	space
+1146	8	helium	NONE	space	space
+1146	9	helium	NONE	space	space
+1146	10	helium	NONE	space	space
+1146	1	energy	NONE	-	-
+1146	2	energy	NONE	-	-
+1146	3	energy	NONE	-	-
+1146	4	energy	CREATE	-	helium
+1146	5	energy	MOVE	helium	space
+1146	6	energy	DESTROY	space	-
+1146	7	energy	NONE	-	-
+1146	8	energy	NONE	-	-
+1146	9	energy	NONE	-	-
+1146	10	energy	NONE	-	-
+1146	1	carbon atom	NONE	-	-
+1146	2	carbon atom	NONE	-	-
+1146	3	carbon atom	NONE	-	-
+1146	4	carbon atom	NONE	-	-
+1146	5	carbon atom	NONE	-	-
+1146	6	carbon atom	NONE	-	-
+1146	7	carbon atom	CREATE	-	helium
+1146	8	carbon atom	NONE	helium	helium
+1146	9	carbon atom	MOVE	helium	space
+1146	10	carbon atom	NONE	space	space
+600	1	hot gas	MOVE	fuel	air
+600	2	hot gas	MOVE	air	air and petrol
+600	3	hot gas	MOVE	air and petrol	piston
+600	4	hot gas	NONE	piston	piston
+600	5	hot gas	NONE	piston	piston
+600	6	hot gas	NONE	piston	piston
+600	1	petrol	DESTROY	?	-
+600	2	petrol	CREATE	-	fuel
+600	3	petrol	MOVE	fuel	piston
+600	4	petrol	NONE	piston	piston
+600	5	petrol	MOVE	piston	fuel be
+600	6	petrol	NONE	fuel be	fuel be
+600	1	fuel	MOVE	?	energy when
+600	2	fuel	NONE	energy when	energy when
+600	3	fuel	MOVE	energy when	piston
+600	4	fuel	MOVE	piston	energy when
+600	5	fuel	NONE	energy when	energy when
+600	6	fuel	DESTROY	energy when	-
+600	1	air	MOVE	?	air
+600	2	air	MOVE	air	car
+600	3	air	MOVE	car	piston
+600	4	air	NONE	piston	piston
+600	5	air	NONE	piston	piston
+600	6	air	MOVE	piston	gear
+600	1	energy	MOVE	?	fuel be convert
+600	2	energy	DESTROY	fuel be convert	-
+600	3	energy	NONE	-	-
+600	4	energy	CREATE	-	piston
+600	5	energy	MOVE	piston	gear
+600	6	energy	DESTROY	gear	-
+1145	1	red giant star	MOVE	?	exist
+1145	2	red giant star	MOVE	exist	hydrogen
+1145	3	red giant star	MOVE	hydrogen	helium
+1145	4	red giant star	NONE	helium	helium
+1145	5	red giant star	MOVE	helium	last stage of stellar evolution
+1145	1	hydrogen fuel	NONE	-	-
+1145	2	hydrogen fuel	CREATE	-	exist star . formation
+1145	3	hydrogen fuel	MOVE	exist star . formation	hydrogen
+1145	4	hydrogen fuel	MOVE	hydrogen	helium
+1145	5	hydrogen fuel	NONE	helium	helium
+1145	1	helium atom	NONE	-	-
+1145	2	helium atom	NONE	-	-
+1145	3	helium atom	CREATE	-	hydrogen
+1145	4	helium atom	MOVE	hydrogen	to
+1145	5	helium atom	MOVE	to	last
+1145	1	hydrogen atom	NONE	-	-
+1145	2	hydrogen atom	NONE	-	-
+1145	3	hydrogen atom	CREATE	-	helium atom
+1145	4	hydrogen atom	MOVE	helium atom	helium
+1145	5	hydrogen atom	NONE	helium	helium
+725	1	rock	NONE	-	-
+725	2	rock	NONE	-	-
+725	3	rock	CREATE	-	hard
+725	4	rock	DESTROY	hard	-
+725	5	rock	NONE	-	-
+725	6	rock	NONE	-	-
+725	1	soft tissue	MOVE	most	mud and silt
+725	2	soft tissue	NONE	mud and silt	mud and silt
+725	3	soft tissue	MOVE	mud and silt	rock
+725	4	soft tissue	MOVE	rock	mud and silt
+725	5	soft tissue	NONE	mud and silt	mud and silt
+725	6	soft tissue	NONE	mud and silt	mud and silt
+725	1	plant	DESTROY	?	-
+725	2	plant	NONE	-	-
+725	3	plant	NONE	-	-
+725	4	plant	NONE	-	-
+725	5	plant	NONE	-	-
+725	6	plant	NONE	-	-
+725	1	stone replica	NONE	-	-
+725	2	stone replica	NONE	-	-
+725	3	stone replica	NONE	-	-
+725	4	stone replica	NONE	-	-
+725	5	stone replica	NONE	-	-
+725	6	stone replica	CREATE	-	organism
+725	1	animal	NONE	-	-
+725	2	animal	NONE	-	-
+725	3	animal	NONE	-	-
+725	4	animal	NONE	-	-
+725	5	animal	NONE	-	-
+725	6	animal	NONE	-	-
+725	1	bone	MOVE	most	mud
+725	2	bone	NONE	mud	mud
+725	3	bone	DESTROY	mud	-
+725	4	bone	CREATE	-	cell
+725	5	bone	DESTROY	cell	-
+725	6	bone	NONE	-	-
+725	1	mineral	NONE	-	-
+725	2	mineral	NONE	-	-
+725	3	mineral	NONE	-	-
+725	4	mineral	CREATE	-	cell
+725	5	mineral	NONE	cell	cell
+725	6	mineral	DESTROY	cell	-
+725	1	fossil	MOVE	most	mud
+725	2	fossil	DESTROY	mud	-
+725	3	fossil	NONE	-	-
+725	4	fossil	NONE	-	-
+725	5	fossil	NONE	-	-
+725	6	fossil	NONE	-	-
+725	1	sediment	CREATE	-	mud and silt
+725	2	sediment	MOVE	mud and silt	hard bone
+725	3	sediment	MOVE	hard bone	over
+725	4	sediment	MOVE	over	cell
+725	5	sediment	DESTROY	cell	-
+725	6	sediment	NONE	-	-
+726	1	rock	NONE	-	-
+726	2	rock	NONE	-	-
+726	3	rock	NONE	-	-
+726	4	rock	NONE	-	-
+726	5	rock	NONE	-	-
+726	6	rock	NONE	-	-
+726	7	rock	NONE	-	-
+726	8	rock	CREATE	-	sand
+726	9	rock	MOVE	sand	water
+726	10	rock	NONE	water	water
+726	1	hole	NONE	-	-
+726	2	hole	NONE	-	-
+726	3	hole	NONE	-	-
+726	4	hole	NONE	-	-
+726	5	hole	NONE	-	-
+726	6	hole	NONE	-	-
+726	7	hole	NONE	-	-
+726	8	hole	NONE	-	-
+726	9	hole	NONE	-	-
+726	10	hole	CREATE	-	rock
+726	1	sand	NONE	-	-
+726	2	sand	NONE	-	-
+726	3	sand	NONE	-	-
+726	4	sand	NONE	-	-
+726	5	sand	CREATE	-	bottom of a ocean
+726	6	sand	MOVE	bottom of a ocean	skeleton
+726	7	sand	NONE	skeleton	skeleton
+726	8	sand	MOVE	skeleton	rock
+726	9	sand	MOVE	rock	water
+726	10	sand	MOVE	water	rock
+726	1	animal 's skeleton	NONE	-	-
+726	2	animal 's skeleton	NONE	-	-
+726	3	animal 's skeleton	NONE	-	-
+726	4	animal 's skeleton	CREATE	-	bottom of a ocean
+726	5	animal 's skeleton	DESTROY	bottom of a ocean	-
+726	6	animal 's skeleton	NONE	-	-
+726	7	animal 's skeleton	NONE	-	-
+726	8	animal 's skeleton	NONE	-	-
+726	9	animal 's skeleton	NONE	-	-
+726	10	animal 's skeleton	NONE	-	-
+726	1	animal	MOVE	?	happy life
+726	2	animal	MOVE	happy life	very old
+726	3	animal	DESTROY	very old	-
+726	4	animal	CREATE	-	ocean
+726	5	animal	DESTROY	ocean	-
+726	6	animal	NONE	-	-
+726	7	animal	NONE	-	-
+726	8	animal	NONE	-	-
+726	9	animal	NONE	-	-
+726	10	animal	NONE	-	-
+726	1	mud	NONE	-	-
+726	2	mud	NONE	-	-
+726	3	mud	NONE	-	-
+726	4	mud	NONE	-	-
+726	5	mud	CREATE	-	ocean
+726	6	mud	MOVE	ocean	skeleton
+726	7	mud	MOVE	skeleton	bottom of a ocean
+726	8	mud	DESTROY	bottom of a ocean	-
+726	9	mud	NONE	-	-
+726	10	mud	NONE	-	-
+727	1	rock	NONE	-	-
+727	2	rock	NONE	-	-
+727	3	rock	NONE	-	-
+727	4	rock	NONE	-	-
+727	5	rock	NONE	-	-
+727	6	rock	CREATE	-	bone
+727	7	rock	NONE	bone	bone
+727	8	rock	NONE	bone	bone
+727	9	rock	NONE	bone	bone
+727	10	rock	DESTROY	bone	-
+727	1	soft tissue	MOVE	?	animal
+727	2	soft tissue	MOVE	animal	watery environment
+727	3	soft tissue	MOVE	watery environment	environment
+727	4	soft tissue	NONE	environment	environment
+727	5	soft tissue	DESTROY	environment	-
+727	6	soft tissue	NONE	-	-
+727	7	soft tissue	NONE	-	-
+727	8	soft tissue	NONE	-	-
+727	9	soft tissue	NONE	-	-
+727	10	soft tissue	NONE	-	-
+727	1	animal	DESTROY	?	-
+727	2	animal	NONE	-	-
+727	3	animal	NONE	-	-
+727	4	animal	NONE	-	-
+727	5	animal	NONE	-	-
+727	6	animal	NONE	-	-
+727	7	animal	NONE	-	-
+727	8	animal	NONE	-	-
+727	9	animal	NONE	-	-
+727	10	animal	NONE	-	-
+727	1	bone	NONE	-	-
+727	2	bone	NONE	-	-
+727	3	bone	CREATE	-	environment
+727	4	bone	MOVE	environment	soft
+727	5	bone	MOVE	soft	bone be leave behind . over
+727	6	bone	DESTROY	bone be leave behind . over	-
+727	7	bone	CREATE	-	bone
+727	8	bone	DESTROY	bone	-
+727	9	bone	NONE	-	-
+727	10	bone	CREATE	-	bone
+727	1	silt	NONE	-	-
+727	2	silt	NONE	-	-
+727	3	silt	NONE	-	-
+727	4	silt	NONE	-	-
+727	5	silt	NONE	-	-
+727	6	silt	NONE	-	-
+727	7	silt	NONE	-	-
+727	8	silt	NONE	-	-
+727	9	silt	NONE	-	-
+727	10	silt	NONE	-	-
+727	1	mineral	NONE	-	-
+727	2	mineral	NONE	-	-
+727	3	mineral	NONE	-	-
+727	4	mineral	NONE	-	-
+727	5	mineral	NONE	-	-
+727	6	mineral	NONE	-	-
+727	7	mineral	CREATE	-	bone
+727	8	mineral	MOVE	bone	environment
+727	9	mineral	MOVE	environment	replace the organic material
+727	10	mineral	MOVE	replace the organic material	organic material
+727	1	fossil	NONE	-	-
+727	2	fossil	NONE	-	-
+727	3	fossil	NONE	-	-
+727	4	fossil	NONE	-	-
+727	5	fossil	NONE	-	-
+727	6	fossil	NONE	-	-
+727	7	fossil	NONE	-	-
+727	8	fossil	NONE	-	-
+727	9	fossil	NONE	-	-
+727	10	fossil	CREATE	-	organic material
+727	1	mud	MOVE	?	animal
+727	2	mud	NONE	animal	animal
+727	3	mud	MOVE	animal	environment
+727	4	mud	MOVE	environment	bone
+727	5	mud	NONE	bone	bone
+727	6	mud	DESTROY	bone	-
+727	7	mud	NONE	-	-
+727	8	mud	NONE	-	-
+727	9	mud	NONE	-	-
+727	10	mud	NONE	-	-
+502	1	diesel	MOVE	?	combustion chamber
+502	2	diesel	DESTROY	combustion chamber	-
+502	3	diesel	NONE	-	-
+502	4	diesel	NONE	-	-
+502	5	diesel	NONE	-	-
+502	1	rotary motion	NONE	-	-
+502	2	rotary motion	NONE	-	-
+502	3	rotary motion	CREATE	-	piston
+502	4	rotary motion	DESTROY	piston	-
+502	5	rotary motion	NONE	-	-
+502	1	petrol	MOVE	?	combustion chamber
+502	2	petrol	DESTROY	combustion chamber	-
+502	3	petrol	NONE	-	-
+502	4	petrol	NONE	-	-
+502	5	petrol	NONE	-	-
+502	1	piston	MOVE	energy	combustion chamber
+502	2	piston	NONE	combustion chamber	combustion chamber
+502	3	piston	DESTROY	combustion chamber	-
+502	4	piston	NONE	-	-
+502	5	piston	NONE	-	-
+502	1	car	NONE	-	-
+502	2	car	NONE	-	-
+502	3	car	NONE	-	-
+502	4	car	CREATE	-	rotary
+502	5	car	MOVE	rotary	forward
+502	1	piston motion	NONE	-	-
+502	2	piston motion	NONE	-	-
+502	3	piston motion	NONE	-	-
+502	4	piston motion	NONE	-	-
+502	5	piston motion	NONE	-	-
+502	1	energy	DESTROY	?	-
+502	2	energy	CREATE	-	piston
+502	3	energy	NONE	piston	piston
+502	4	energy	NONE	piston	piston
+502	5	energy	MOVE	piston	car
+503	1	crankshaft	MOVE	?	several
+503	2	crankshaft	NONE	several	several
+503	3	crankshaft	NONE	several	several
+503	4	crankshaft	MOVE	several	gas
+503	5	crankshaft	MOVE	gas	gas expand when it encounter air
+503	6	crankshaft	MOVE	gas expand when it encounter air	piston out
+503	7	crankshaft	MOVE	piston out	several piston
+503	8	crankshaft	MOVE	several piston	several
+503	9	crankshaft	MOVE	several	wheel
+503	1	car	MOVE	?	a
+503	2	car	MOVE	a	car
+503	3	car	DESTROY	car	-
+503	4	car	CREATE	-	gas
+503	5	car	NONE	gas	gas
+503	6	car	NONE	gas	gas
+503	7	car	NONE	gas	gas
+503	8	car	MOVE	gas	several
+503	9	car	MOVE	several	body
+503	1	spark	NONE	-	-
+503	2	spark	NONE	-	-
+503	3	spark	CREATE	-	several
+503	4	spark	MOVE	several	gas
+503	5	spark	NONE	gas	gas
+503	6	spark	NONE	gas	gas
+503	7	spark	NONE	gas	gas
+503	8	spark	NONE	gas	gas
+503	9	spark	NONE	gas	gas
+503	1	piston	NONE	-	-
+503	2	piston	NONE	-	-
+503	3	piston	NONE	-	-
+503	4	piston	NONE	-	-
+503	5	piston	NONE	-	-
+503	6	piston	CREATE	-	gas expand when it encounter air
+503	7	piston	MOVE	gas expand when it encounter air	crankshaft
+503	8	piston	MOVE	crankshaft	motion of several
+503	9	piston	MOVE	motion of several	body
+503	1	wheel	MOVE	?	car
+503	2	wheel	NONE	car	car
+503	3	wheel	MOVE	car	motion
+503	4	wheel	MOVE	motion	gas
+503	5	wheel	MOVE	gas	motion
+503	6	wheel	MOVE	motion	piston
+503	7	wheel	MOVE	piston	several piston
+503	8	wheel	MOVE	several piston	several
+503	9	wheel	MOVE	several	body
+503	1	gas	MOVE	?	car
+503	2	gas	NONE	car	car
+503	3	gas	MOVE	car	air
+503	4	gas	MOVE	air	gas
+503	5	gas	MOVE	gas	gas . the burning
+503	6	gas	MOVE	gas . the burning	piston
+503	7	gas	MOVE	piston	several
+503	8	gas	NONE	several	several
+503	9	gas	MOVE	several	body
+503	1	gasoline	MOVE	?	car
+503	2	gasoline	NONE	car	car
+503	3	gasoline	NONE	car	car
+503	4	gasoline	MOVE	car	gas
+503	5	gasoline	MOVE	gas	gas expand when it encounter air
+503	6	gasoline	NONE	gas expand when it encounter air	gas expand when it encounter air
+503	7	gasoline	MOVE	gas expand when it encounter air	several piston
+503	8	gasoline	MOVE	several piston	wheel
+503	9	gasoline	MOVE	wheel	body
+503	1	battery	NONE	-	-
+503	2	battery	NONE	-	-
+503	3	battery	NONE	-	-
+503	4	battery	CREATE	-	gas
+503	5	battery	NONE	gas	gas
+503	6	battery	NONE	gas	gas
+503	7	battery	NONE	gas	gas
+503	8	battery	MOVE	gas	several
+503	9	battery	MOVE	several	body
+1190	1	oxygenate blood	MOVE	two	lung
+1190	2	oxygenate blood	NONE	lung	lung
+1190	3	oxygenate blood	NONE	lung	lung
+1190	4	oxygenate blood	NONE	lung	lung
+1190	5	oxygenate blood	NONE	lung	lung
+1190	6	oxygenate blood	NONE	lung	lung
+1190	7	oxygenate blood	NONE	lung	lung
+1190	8	oxygenate blood	NONE	lung	lung
+1190	9	oxygenate blood	MOVE	lung	body
+1190	10	oxygenate blood	NONE	body	body
+1190	1	deoxygenate blood	MOVE	?	body
+1190	2	deoxygenate blood	NONE	body	body
+1190	3	deoxygenate blood	DESTROY	body	-
+1190	4	deoxygenate blood	NONE	-	-
+1190	5	deoxygenate blood	NONE	-	-
+1190	6	deoxygenate blood	NONE	-	-
+1190	7	deoxygenate blood	NONE	-	-
+1190	8	deoxygenate blood	CREATE	-	lung
+1190	9	deoxygenate blood	MOVE	lung	body
+1190	10	deoxygenate blood	NONE	body	body
+1190	1	oxygen	MOVE	two	lung
+1190	2	oxygen	NONE	lung	lung
+1190	3	oxygen	NONE	lung	lung
+1190	4	oxygen	NONE	lung	lung
+1190	5	oxygen	NONE	lung	lung
+1190	6	oxygen	NONE	lung	lung
+1190	7	oxygen	NONE	lung	lung
+1190	8	oxygen	NONE	lung	lung
+1190	9	oxygen	MOVE	lung	body
+1190	10	oxygen	NONE	body	body
+400	1	electricity	NONE	-	-
+400	2	electricity	NONE	-	-
+400	3	electricity	NONE	-	-
+400	4	electricity	NONE	-	-
+400	5	electricity	CREATE	-	sun
+400	1	energy	NONE	-	-
+400	2	energy	NONE	-	-
+400	3	energy	NONE	-	-
+400	4	energy	CREATE	-	element
+400	5	energy	DESTROY	element	-
+401	1	sunlight	NONE	-	-
+401	2	sunlight	CREATE	-	top
+401	3	sunlight	DESTROY	top	-
+401	4	sunlight	NONE	-	-
+401	5	sunlight	NONE	-	-
+401	6	sunlight	NONE	-	-
+401	7	sunlight	NONE	-	-
+401	1	direct current	NONE	-	-
+401	2	direct current	NONE	-	-
+401	3	direct current	NONE	-	-
+401	4	direct current	NONE	-	-
+401	5	direct current	CREATE	-	bottom
+401	6	direct current	NONE	bottom	bottom
+401	7	direct current	DESTROY	bottom	-
+401	1	alternate current	NONE	-	-
+401	2	alternate current	NONE	-	-
+401	3	alternate current	NONE	-	-
+401	4	alternate current	NONE	-	-
+401	5	alternate current	NONE	-	-
+401	6	alternate current	CREATE	-	direct
+401	7	alternate current	MOVE	direct	house
+1189	1	crater	NONE	-	-
+1189	2	crater	NONE	-	-
+1189	3	crater	NONE	-	-
+1189	4	crater	NONE	-	-
+1189	5	crater	NONE	-	-
+1189	6	crater	CREATE	-	atmosphere
+1189	1	chunk of rock	MOVE	?	atmosphere
+1189	2	chunk of rock	NONE	atmosphere	atmosphere
+1189	3	chunk of rock	NONE	atmosphere	atmosphere
+1189	4	chunk of rock	MOVE	atmosphere	earth
+1189	5	chunk of rock	NONE	earth	earth
+1189	6	chunk of rock	NONE	earth	earth
+1188	1	hole	NONE	-	-
+1188	2	hole	NONE	-	-
+1188	3	hole	NONE	-	-
+1188	4	hole	NONE	-	-
+1188	5	hole	CREATE	-	atmosphere
+1188	1	comet	MOVE	?	outer space
+1188	2	comet	NONE	outer space	outer space
+1188	3	comet	DESTROY	outer space	-
+1188	4	comet	CREATE	-	space
+1188	5	comet	DESTROY	space	-
+409	1	image	NONE	-	-
+409	2	image	NONE	-	-
+409	3	image	NONE	-	-
+409	4	image	CREATE	-	retina
+409	5	image	DESTROY	retina	-
+409	6	image	NONE	-	-
+409	7	image	NONE	-	-
+409	1	electrical impulse	NONE	-	-
+409	2	electrical impulse	NONE	-	-
+409	3	electrical impulse	NONE	-	-
+409	4	electrical impulse	NONE	-	-
+409	5	electrical impulse	CREATE	-	retina
+409	6	electrical impulse	MOVE	retina	impulse
+409	7	electrical impulse	MOVE	impulse	brain
+410	1	electric signal	NONE	-	-
+410	2	electric signal	NONE	-	-
+410	3	electric signal	NONE	-	-
+410	4	electric signal	CREATE	-	retina
+410	5	electric signal	MOVE	retina	signal
+410	6	electric signal	NONE	signal	signal
+410	1	light	CREATE	-	cornea
+410	2	light	MOVE	cornea	iris
+410	3	light	MOVE	iris	eye
+410	4	light	DESTROY	eye	-
+410	5	light	NONE	-	-
+410	6	light	NONE	-	-
+411	1	light	MOVE	?	visual
+411	2	light	DESTROY	visual	-
+411	3	light	NONE	-	-
+411	4	light	NONE	-	-
+411	5	light	NONE	-	-
+411	6	light	NONE	-	-
+411	7	light	NONE	-	-
+411	8	light	NONE	-	-
+411	1	electrochemical signal	NONE	-	-
+411	2	electrochemical signal	NONE	-	-
+411	3	electrochemical signal	CREATE	-	light
+411	4	electrochemical signal	NONE	light	light
+411	5	electrochemical signal	MOVE	light	third
+411	6	electrochemical signal	NONE	third	third
+411	7	electrochemical signal	MOVE	third	superior colliculus
+411	8	electrochemical signal	MOVE	superior colliculus	brain
+653	1	seed	MOVE	?	plant
+653	2	seed	NONE	plant	plant
+653	3	seed	DESTROY	plant	-
+653	4	seed	NONE	-	-
+653	5	seed	NONE	-	-
+653	6	seed	NONE	-	-
+653	1	fruit	NONE	-	-
+653	2	fruit	NONE	-	-
+653	3	fruit	NONE	-	-
+653	4	fruit	NONE	-	-
+653	5	fruit	CREATE	-	tree grow flower . the flower
+653	6	fruit	MOVE	tree grow flower . the flower	tree
+653	1	tree	NONE	-	-
+653	2	tree	NONE	-	-
+653	3	tree	CREATE	-	plant
+653	4	tree	MOVE	plant	tree
+653	5	tree	MOVE	tree	flower
+653	6	tree	MOVE	flower	fruit
+653	1	flower	NONE	-	-
+653	2	flower	NONE	-	-
+653	3	flower	NONE	-	-
+653	4	flower	CREATE	-	tree
+653	5	flower	NONE	tree	tree
+653	6	flower	NONE	tree	tree
+533	1	seed	MOVE	?	adult tree
+533	2	seed	MOVE	adult tree	soil
+533	3	seed	NONE	soil	soil
+533	4	seed	DESTROY	soil	-
+533	5	seed	NONE	-	-
+533	6	seed	NONE	-	-
+533	7	seed	NONE	-	-
+533	1	sprout	CREATE	-	adult tree
+533	2	sprout	MOVE	adult tree	soil
+533	3	sprout	MOVE	soil	small seedling , a tree
+533	4	sprout	MOVE	small seedling , a tree	soil
+533	5	sprout	MOVE	soil	tree
+533	6	sprout	NONE	tree	tree
+533	7	sprout	NONE	tree	tree
+533	1	sapling	NONE	-	-
+533	2	sapling	NONE	-	-
+533	3	sapling	NONE	-	-
+533	4	sapling	CREATE	-	soil
+533	5	sapling	MOVE	soil	type of tree
+533	6	sapling	DESTROY	type of tree	-
+533	7	sapling	NONE	-	-
+533	1	tree	CREATE	-	soil
+533	2	tree	NONE	soil	soil
+533	3	tree	MOVE	soil	tree
+533	4	tree	NONE	tree	tree
+533	5	tree	MOVE	tree	type
+533	6	tree	DESTROY	type	-
+533	7	tree	NONE	-	-
+654	1	tree	NONE	-	-
+654	2	tree	NONE	-	-
+654	3	tree	NONE	-	-
+654	4	tree	NONE	-	-
+654	5	tree	NONE	-	-
+654	6	tree	NONE	-	-
+654	1	root system	NONE	-	-
+654	2	root system	CREATE	-	seedling
+654	3	root system	NONE	seedling	seedling
+654	4	root system	MOVE	seedling	tree
+654	5	root system	MOVE	tree	seedling
+654	6	root system	NONE	seedling	seedling
+654	1	material for new growth	NONE	-	-
+654	2	material for new growth	NONE	-	-
+654	3	material for new growth	NONE	-	-
+654	4	material for new growth	NONE	-	-
+654	5	material for new growth	NONE	-	-
+654	6	material for new growth	CREATE	-	tree
+896	1	oxygenate blood	MOVE	?	right
+896	2	oxygenate blood	MOVE	right	oxygen-depleted blood
+896	3	oxygenate blood	MOVE	oxygen-depleted blood	open
+896	4	oxygenate blood	MOVE	open	open tricuspid valve
+896	5	oxygenate blood	MOVE	open tricuspid valve	lung
+896	6	oxygenate blood	MOVE	lung	blood
+896	7	oxygenate blood	MOVE	blood	lung
+896	8	oxygenate blood	MOVE	lung	left atrium
+896	9	oxygenate blood	MOVE	left atrium	lung
+896	1	oxygen-depleted blood	MOVE	?	right
+896	2	oxygen-depleted blood	MOVE	right	right atrium . the atrium
+896	3	oxygen-depleted blood	MOVE	right atrium . the atrium	open
+896	4	oxygen-depleted blood	MOVE	open	open tricuspid valve
+896	5	oxygen-depleted blood	MOVE	open tricuspid valve	ventricle
+896	6	oxygen-depleted blood	MOVE	ventricle	blood
+896	7	oxygen-depleted blood	NONE	blood	blood
+896	8	oxygen-depleted blood	MOVE	blood	left
+896	9	oxygen-depleted blood	MOVE	left	body
+896	1	blood	MOVE	?	right
+896	2	blood	MOVE	right	right atrium . the atrium
+896	3	blood	MOVE	right atrium . the atrium	right
+896	4	blood	MOVE	right	open tricuspid valve
+896	5	blood	NONE	open tricuspid valve	open tricuspid valve
+896	6	blood	MOVE	open tricuspid valve	pulmonic
+896	7	blood	MOVE	pulmonic	lung
+896	8	blood	MOVE	lung	left atrium
+896	9	blood	MOVE	left atrium	body
+534	1	seed	MOVE	?	plant
+534	2	seed	DESTROY	plant	-
+534	3	seed	NONE	-	-
+534	4	seed	NONE	-	-
+534	5	seed	NONE	-	-
+534	6	seed	NONE	-	-
+534	7	seed	NONE	-	-
+534	1	fruit	NONE	-	-
+534	2	fruit	NONE	-	-
+534	3	fruit	NONE	-	-
+534	4	fruit	CREATE	-	small tree
+534	5	fruit	MOVE	small tree	flower
+534	6	fruit	MOVE	flower	small tree
+534	7	fruit	MOVE	small tree	eventually
+534	1	tree	NONE	-	-
+534	2	tree	CREATE	-	plant
+534	3	tree	MOVE	plant	tree
+534	4	tree	MOVE	tree	small tree
+534	5	tree	MOVE	small tree	flower
+534	6	tree	DESTROY	flower	-
+534	7	tree	NONE	-	-
+534	1	small tree	NONE	-	-
+534	2	small tree	CREATE	-	plant
+534	3	small tree	MOVE	plant	tree
+534	4	small tree	NONE	tree	tree
+534	5	small tree	DESTROY	tree	-
+534	6	small tree	NONE	-	-
+534	7	small tree	CREATE	-	tree
+534	1	flower	NONE	-	-
+534	2	flower	NONE	-	-
+534	3	flower	NONE	-	-
+534	4	flower	NONE	-	-
+534	5	flower	CREATE	-	small tree
+534	6	flower	MOVE	small tree	tree
+534	7	flower	DESTROY	tree	-
+659	1	nitrogen	MOVE	?	bacterium
+659	2	nitrogen	DESTROY	bacterium	-
+659	3	nitrogen	NONE	-	-
+659	4	nitrogen	NONE	-	-
+659	5	nitrogen	CREATE	-	air
+659	6	nitrogen	MOVE	air	cycle
+659	1	plant	MOVE	?	bacterium
+659	2	plant	MOVE	bacterium	nitrate by bacterium
+659	3	plant	MOVE	nitrate by bacterium	root
+659	4	plant	DESTROY	root	-
+659	5	plant	NONE	-	-
+659	6	plant	NONE	-	-
+659	1	ammonium	MOVE	?	fixation
+659	2	ammonium	MOVE	fixation	nitrate
+659	3	ammonium	MOVE	nitrate	plant
+659	4	ammonium	MOVE	plant	soil
+659	5	ammonium	MOVE	soil	air
+659	6	ammonium	MOVE	air	cycle
+659	1	extra nitrogen	NONE	-	-
+659	2	extra nitrogen	NONE	-	-
+659	3	extra nitrogen	NONE	-	-
+659	4	extra nitrogen	NONE	-	-
+659	5	extra nitrogen	CREATE	-	air
+659	6	extra nitrogen	NONE	air	air
+659	1	nitrate	NONE	-	-
+659	2	nitrate	CREATE	-	bacterium
+659	3	nitrate	MOVE	bacterium	plant
+659	4	nitrate	MOVE	plant	soil into they root
+659	5	nitrate	MOVE	soil into they root	air
+659	6	nitrate	MOVE	air	cycle
+660	1	waste	NONE	-	-
+660	2	waste	NONE	-	-
+660	3	waste	NONE	-	-
+660	4	waste	NONE	-	-
+660	5	waste	CREATE	-	animal
+660	6	waste	DESTROY	animal	-
+660	7	waste	NONE	-	-
+660	8	waste	NONE	-	-
+660	9	waste	NONE	-	-
+660	1	organic nitrogen	MOVE	nitrogen-fixing	bacterium
+660	2	organic nitrogen	MOVE	bacterium	plant
+660	3	organic nitrogen	MOVE	plant	soil
+660	4	organic nitrogen	NONE	soil	soil
+660	5	organic nitrogen	NONE	soil	soil
+660	6	organic nitrogen	MOVE	soil	fungus
+660	7	organic nitrogen	DESTROY	fungus	-
+660	8	organic nitrogen	NONE	-	-
+660	9	organic nitrogen	NONE	-	-
+660	1	plant	MOVE	nitrogen-fixing	bacterium
+660	2	plant	MOVE	bacterium	soil
+660	3	plant	DESTROY	soil	-
+660	4	plant	NONE	-	-
+660	5	plant	NONE	-	-
+660	6	plant	NONE	-	-
+660	7	plant	NONE	-	-
+660	8	plant	NONE	-	-
+660	9	plant	NONE	-	-
+660	1	atmospheric nitrogen	MOVE	?	organic
+660	2	atmospheric nitrogen	MOVE	organic	plant
+660	3	atmospheric nitrogen	DESTROY	plant	-
+660	4	atmospheric nitrogen	NONE	-	-
+660	5	atmospheric nitrogen	NONE	-	-
+660	6	atmospheric nitrogen	NONE	-	-
+660	7	atmospheric nitrogen	NONE	-	-
+660	8	atmospheric nitrogen	NONE	-	-
+660	9	atmospheric nitrogen	NONE	-	-
+660	1	ammonium	NONE	-	-
+660	2	ammonium	NONE	-	-
+660	3	ammonium	NONE	-	-
+660	4	ammonium	NONE	-	-
+660	5	ammonium	NONE	-	-
+660	6	ammonium	CREATE	-	fungus
+660	7	ammonium	MOVE	fungus	atmosphere
+660	8	ammonium	DESTROY	atmosphere	-
+660	9	ammonium	NONE	-	-
+660	1	animal	NONE	-	-
+660	2	animal	CREATE	-	soil
+660	3	animal	MOVE	soil	plant
+660	4	animal	DESTROY	plant	-
+660	5	animal	CREATE	-	atmosphere
+660	6	animal	DESTROY	atmosphere	-
+660	7	animal	NONE	-	-
+660	8	animal	NONE	-	-
+660	9	animal	NONE	-	-
+660	1	nitrate	NONE	-	-
+660	2	nitrate	NONE	-	-
+660	3	nitrate	NONE	-	-
+660	4	nitrate	NONE	-	-
+660	5	nitrate	NONE	-	-
+660	6	nitrate	NONE	-	-
+660	7	nitrate	CREATE	-	soil
+660	8	nitrate	DESTROY	soil	-
+660	9	nitrate	NONE	-	-
+660	1	nitrogen gas	NONE	-	-
+660	2	nitrogen gas	NONE	-	-
+660	3	nitrogen gas	NONE	-	-
+660	4	nitrogen gas	NONE	-	-
+660	5	nitrogen gas	NONE	-	-
+660	6	nitrogen gas	NONE	-	-
+660	7	nitrogen gas	NONE	-	-
+660	8	nitrogen gas	CREATE	-	atmosphere
+660	9	nitrogen gas	NONE	atmosphere	atmosphere
+661	1	nitrogen	MOVE	?	process
+661	2	nitrogen	DESTROY	process	-
+661	3	nitrogen	NONE	-	-
+661	4	nitrogen	CREATE	-	plant
+661	5	nitrogen	MOVE	plant	root
+661	6	nitrogen	MOVE	root	amino
+661	7	nitrogen	MOVE	amino	ammonium
+661	8	nitrogen	MOVE	ammonium	soil
+661	9	nitrogen	NONE	soil	soil
+661	1	plant	MOVE	?	ammonium
+661	2	plant	DESTROY	ammonium	-
+661	3	plant	CREATE	-	air
+661	4	plant	MOVE	air	plant
+661	5	plant	MOVE	plant	root
+661	6	plant	NONE	root	root
+661	7	plant	DESTROY	root	-
+661	8	plant	NONE	-	-
+661	9	plant	NONE	-	-
+661	1	ammonium	MOVE	fixation	plant
+661	2	ammonium	MOVE	plant	nitrate
+661	3	ammonium	MOVE	nitrate	plant
+661	4	ammonium	NONE	plant	plant
+661	5	ammonium	NONE	plant	plant
+661	6	ammonium	NONE	plant	plant
+661	7	ammonium	MOVE	plant	root
+661	8	ammonium	MOVE	root	soil
+661	9	ammonium	DESTROY	soil	-
+661	1	animal	NONE	-	-
+661	2	animal	NONE	-	-
+661	3	animal	NONE	-	-
+661	4	animal	NONE	-	-
+661	5	animal	NONE	-	-
+661	6	animal	NONE	-	-
+661	7	animal	NONE	-	-
+661	8	animal	NONE	-	-
+661	9	animal	NONE	-	-
+661	1	nitrate	NONE	-	-
+661	2	nitrate	CREATE	-	plant
+661	3	nitrate	NONE	plant	plant
+661	4	nitrate	DESTROY	plant	-
+661	5	nitrate	NONE	-	-
+661	6	nitrate	CREATE	-	root
+661	7	nitrate	NONE	root	root
+661	8	nitrate	MOVE	root	soil
+661	9	nitrate	MOVE	soil	air
+429	1	waste	NONE	-	-
+429	2	waste	NONE	-	-
+429	3	waste	NONE	-	-
+429	4	waste	NONE	-	-
+429	5	waste	NONE	-	-
+429	6	waste	CREATE	-	atmosphere
+429	7	waste	DESTROY	atmosphere	-
+429	8	waste	NONE	-	-
+429	9	waste	NONE	-	-
+429	10	waste	NONE	-	-
+429	1	gas-based form	NONE	-	-
+429	2	gas-based form	NONE	-	-
+429	3	gas-based form	NONE	-	-
+429	4	gas-based form	NONE	-	-
+429	5	gas-based form	NONE	-	-
+429	6	gas-based form	NONE	-	-
+429	7	gas-based form	NONE	-	-
+429	8	gas-based form	NONE	-	-
+429	9	gas-based form	CREATE	-	atmosphere
+429	10	gas-based form	NONE	atmosphere	atmosphere
+429	1	nitrogen	MOVE	nitrogen	atmosphere
+429	2	nitrogen	MOVE	atmosphere	soil
+429	3	nitrogen	MOVE	soil	atmosphere
+429	4	nitrogen	MOVE	atmosphere	plant
+429	5	nitrogen	MOVE	plant	atmosphere . bacterium in soil
+429	6	nitrogen	MOVE	atmosphere . bacterium in soil	plant
+429	7	nitrogen	MOVE	plant	atmosphere . bacterium in soil
+429	8	nitrogen	MOVE	atmosphere . bacterium in soil	soil
+429	9	nitrogen	DESTROY	soil	-
+429	10	nitrogen	CREATE	-	atmosphere
+429	1	plant	NONE	-	-
+429	2	plant	NONE	-	-
+429	3	plant	CREATE	-	soil
+429	4	plant	NONE	soil	soil
+429	5	plant	MOVE	soil	atmosphere
+429	6	plant	DESTROY	atmosphere	-
+429	7	plant	NONE	-	-
+429	8	plant	NONE	-	-
+429	9	plant	NONE	-	-
+429	10	plant	NONE	-	-
+429	1	usable nitrogen	NONE	-	-
+429	2	usable nitrogen	NONE	-	-
+429	3	usable nitrogen	CREATE	-	atmosphere . bacterium in soil
+429	4	usable nitrogen	MOVE	atmosphere . bacterium in soil	plant
+429	5	usable nitrogen	MOVE	plant	atmosphere
+429	6	usable nitrogen	NONE	atmosphere	atmosphere
+429	7	usable nitrogen	NONE	atmosphere	atmosphere
+429	8	usable nitrogen	NONE	atmosphere	atmosphere
+429	9	usable nitrogen	NONE	atmosphere	atmosphere
+429	10	usable nitrogen	NONE	atmosphere	atmosphere
+791	1	ac electricity	NONE	-	-
+791	2	ac electricity	NONE	-	-
+791	3	ac electricity	NONE	-	-
+791	4	ac electricity	CREATE	-	cell
+791	5	ac electricity	MOVE	cell	home
+791	6	ac electricity	MOVE	home	main
+791	1	dc electricity	NONE	-	-
+791	2	dc electricity	NONE	-	-
+791	3	dc electricity	CREATE	-	cell
+791	4	dc electricity	DESTROY	cell	-
+791	5	dc electricity	NONE	-	-
+791	6	dc electricity	NONE	-	-
+310	1	carbon dioxide	MOVE	blood	lung
+310	2	carbon dioxide	NONE	lung	lung
+310	3	carbon dioxide	MOVE	lung	blood
+310	4	carbon dioxide	NONE	blood	blood
+310	5	carbon dioxide	NONE	blood	blood
+310	6	carbon dioxide	MOVE	blood	lung
+310	1	blood	MOVE	?	right
+310	2	blood	MOVE	right	lung
+310	3	blood	NONE	lung	lung
+310	4	blood	NONE	lung	lung
+310	5	blood	MOVE	lung	blood
+310	6	blood	MOVE	blood	body
+310	1	oxygen	MOVE	blood	lung
+310	2	oxygen	NONE	lung	lung
+310	3	oxygen	NONE	lung	lung
+310	4	oxygen	MOVE	lung	blood
+310	5	oxygen	NONE	blood	blood
+310	6	oxygen	NONE	blood	blood
+695	1	cloud	NONE	-	-
+695	2	cloud	NONE	-	-
+695	3	cloud	CREATE	-	air
+695	4	cloud	NONE	air	air
+695	5	cloud	MOVE	air	earth
+695	6	cloud	NONE	earth	earth
+695	7	cloud	MOVE	earth	air
+695	1	rain	NONE	-	-
+695	2	rain	NONE	-	-
+695	3	rain	NONE	-	-
+695	4	rain	NONE	-	-
+695	5	rain	CREATE	-	earth
+695	6	rain	DESTROY	earth	-
+695	7	rain	NONE	-	-
+695	1	vapor	MOVE	?	during
+695	2	vapor	DESTROY	during	-
+695	3	vapor	NONE	-	-
+695	4	vapor	NONE	-	-
+695	5	vapor	NONE	-	-
+695	6	vapor	NONE	-	-
+695	7	vapor	NONE	-	-
+695	1	water vapor	MOVE	during	air
+695	2	water vapor	DESTROY	air	-
+695	3	water vapor	NONE	-	-
+695	4	water vapor	NONE	-	-
+695	5	water vapor	NONE	-	-
+695	6	water vapor	NONE	-	-
+695	7	water vapor	NONE	-	-
+695	1	snow	NONE	-	-
+695	2	snow	NONE	-	-
+695	3	snow	NONE	-	-
+695	4	snow	NONE	-	-
+695	5	snow	CREATE	-	earth
+695	6	snow	NONE	earth	earth
+695	7	snow	DESTROY	earth	-
+695	1	steam	MOVE	during	river or lake or the ocean
+695	2	steam	MOVE	river or lake or the ocean	air
+695	3	steam	NONE	air	air
+695	4	steam	NONE	air	air
+695	5	steam	NONE	air	air
+695	6	steam	MOVE	air	earth
+695	7	steam	MOVE	earth	air
+695	1	hail	NONE	-	-
+695	2	hail	NONE	-	-
+695	3	hail	NONE	-	-
+695	4	hail	NONE	-	-
+695	5	hail	CREATE	-	earth
+695	6	hail	NONE	earth	earth
+695	7	hail	DESTROY	earth	-
+695	1	sleet	NONE	-	-
+695	2	sleet	NONE	-	-
+695	3	sleet	NONE	-	-
+695	4	sleet	NONE	-	-
+695	5	sleet	CREATE	-	earth
+695	6	sleet	NONE	earth	earth
+695	7	sleet	DESTROY	earth	-
+695	1	water	MOVE	during	river or lake or the ocean
+695	2	water	DESTROY	river or lake or the ocean	-
+695	3	water	NONE	-	-
+695	4	water	CREATE	-	air
+695	5	water	MOVE	air	earth
+695	6	water	NONE	earth	earth
+695	7	water	MOVE	earth	ocean
+696	1	cloud	NONE	-	-
+696	2	cloud	NONE	-	-
+696	3	cloud	CREATE	-	cloud
+696	4	cloud	DESTROY	cloud	-
+696	5	cloud	NONE	-	-
+696	6	cloud	NONE	-	-
+696	1	rain	NONE	-	-
+696	2	rain	NONE	-	-
+696	3	rain	NONE	-	-
+696	4	rain	NONE	-	-
+696	5	rain	NONE	-	-
+696	6	rain	NONE	-	-
+696	1	water vapor	CREATE	-	air
+696	2	water vapor	DESTROY	air	-
+696	3	water vapor	NONE	-	-
+696	4	water vapor	NONE	-	-
+696	5	water vapor	NONE	-	-
+696	6	water vapor	NONE	-	-
+696	1	water droplet	NONE	-	-
+696	2	water droplet	CREATE	-	air
+696	3	water droplet	DESTROY	air	-
+696	4	water droplet	CREATE	-	cloud
+696	5	water droplet	DESTROY	cloud	-
+696	6	water droplet	NONE	-	-
+697	1	cloud	NONE	-	-
+697	2	cloud	CREATE	-	cloud
+697	3	cloud	NONE	cloud	cloud
+697	4	cloud	DESTROY	cloud	-
+697	5	cloud	CREATE	-	cloud
+697	1	rain	NONE	-	-
+697	2	rain	NONE	-	-
+697	3	rain	NONE	-	-
+697	4	rain	NONE	-	-
+697	5	rain	CREATE	-	cloud
+697	1	water	MOVE	?	water
+697	2	water	DESTROY	water	-
+697	3	water	NONE	-	-
+697	4	water	CREATE	-	cloud
+697	5	water	NONE	cloud	cloud
+460	1	live thing	MOVE	?	live thing have carbon in they
+460	2	live thing	MOVE	live thing have carbon in they	live thing have
+460	3	live thing	DESTROY	live thing have	-
+460	4	live thing	CREATE	-	remains
+460	5	live thing	DESTROY	remains	-
+460	6	live thing	NONE	-	-
+460	7	live thing	NONE	-	-
+460	8	live thing	NONE	-	-
+460	9	live thing	NONE	-	-
+460	10	live thing	NONE	-	-
+460	1	fossil fuel	NONE	-	-
+460	2	fossil fuel	NONE	-	-
+460	3	fossil fuel	NONE	-	-
+460	4	fossil fuel	NONE	-	-
+460	5	fossil fuel	NONE	-	-
+460	6	fossil fuel	NONE	-	-
+460	7	fossil fuel	NONE	-	-
+460	8	fossil fuel	NONE	-	-
+460	9	fossil fuel	CREATE	-	earth 's surface
+460	10	fossil fuel	NONE	earth 's surface	earth 's surface
+460	1	carbon	MOVE	live	live thing have carbon in they
+460	2	carbon	MOVE	live thing have carbon in they	live thing
+460	3	carbon	MOVE	live thing	remains
+460	4	carbon	DESTROY	remains	-
+460	5	carbon	NONE	-	-
+460	6	carbon	NONE	-	-
+460	7	carbon	CREATE	-	earth 's surface
+460	8	carbon	DESTROY	earth 's surface	-
+460	9	carbon	NONE	-	-
+460	10	carbon	NONE	-	-
+460	1	carbon-based mixture	NONE	-	-
+460	2	carbon-based mixture	NONE	-	-
+460	3	carbon-based mixture	NONE	-	-
+460	4	carbon-based mixture	NONE	-	-
+460	5	carbon-based mixture	NONE	-	-
+460	6	carbon-based mixture	CREATE	-	this carbon-based mixture
+460	7	carbon-based mixture	MOVE	this carbon-based mixture	earth 's surface
+460	8	carbon-based mixture	DESTROY	earth 's surface	-
+460	9	carbon-based mixture	NONE	-	-
+460	10	carbon-based mixture	NONE	-	-
+460	1	power	NONE	-	-
+460	2	power	NONE	-	-
+460	3	power	NONE	-	-
+460	4	power	NONE	-	-
+460	5	power	NONE	-	-
+460	6	power	NONE	-	-
+460	7	power	NONE	-	-
+460	8	power	NONE	-	-
+460	9	power	NONE	-	-
+460	10	power	CREATE	-	earth 's surface
+460	1	remains of live thing	MOVE	?	live
+460	2	remains of live thing	MOVE	live	live thing have
+460	3	remains of live thing	MOVE	live thing have	eventually
+460	4	remains of live thing	MOVE	eventually	remains of live thing eventually
+460	5	remains of live thing	MOVE	remains of live thing eventually	this carbon-based mixture stay
+460	6	remains of live thing	MOVE	this carbon-based mixture stay	mixture stay
+460	7	remains of live thing	MOVE	mixture stay	earth 's surface
+460	8	remains of live thing	NONE	earth 's surface	earth 's surface
+460	9	remains of live thing	NONE	earth 's surface	earth 's surface
+460	10	remains of live thing	NONE	earth 's surface	earth 's surface
+460	1	energy	NONE	-	-
+460	2	energy	NONE	-	-
+460	3	energy	NONE	-	-
+460	4	energy	NONE	-	-
+460	5	energy	NONE	-	-
+460	6	energy	NONE	-	-
+460	7	energy	NONE	-	-
+460	8	energy	NONE	-	-
+460	9	energy	CREATE	-	earth 's surface
+460	10	energy	DESTROY	earth 's surface	-
+582	1	circular pattern	NONE	-	-
+582	2	circular pattern	NONE	-	-
+582	3	circular pattern	NONE	-	-
+582	4	circular pattern	NONE	-	-
+582	5	circular pattern	NONE	-	-
+582	6	circular pattern	NONE	-	-
+582	7	circular pattern	NONE	-	-
+582	8	circular pattern	NONE	-	-
+582	1	tornado	NONE	-	-
+582	2	tornado	NONE	-	-
+582	3	tornado	NONE	-	-
+582	4	tornado	NONE	-	-
+582	5	tornado	NONE	-	-
+582	6	tornado	NONE	-	-
+582	7	tornado	NONE	-	-
+582	8	tornado	CREATE	-	updraft
+582	1	cool , dry air	CREATE	-	air move from south to north
+582	2	cool , dry air	MOVE	air move from south to north	from north to south
+582	3	cool , dry air	MOVE	from north to south	air
+582	4	cool , dry air	NONE	air	air
+582	5	cool , dry air	NONE	air	air
+582	6	cool , dry air	NONE	air	air
+582	7	cool , dry air	NONE	air	air
+582	8	cool , dry air	NONE	air	air
+582	1	air mass	NONE	-	-
+582	2	air mass	CREATE	-	move from north to south
+582	3	air mass	MOVE	move from north to south	air
+582	4	air mass	NONE	air	air
+582	5	air mass	NONE	air	air
+582	6	air mass	NONE	air	air
+582	7	air mass	MOVE	air	updraft
+582	8	air mass	DESTROY	updraft	-
+582	1	warm , moist air	MOVE	?	from south to north
+582	2	warm , moist air	MOVE	from south to north	from north to south
+582	3	warm , moist air	MOVE	from north to south	air
+582	4	warm , moist air	NONE	air	air
+582	5	warm , moist air	DESTROY	air	-
+582	6	warm , moist air	CREATE	-	air
+582	7	warm , moist air	DESTROY	air	-
+582	8	warm , moist air	NONE	-	-
+582	1	mass	NONE	-	-
+582	2	mass	NONE	-	-
+582	3	mass	CREATE	-	air
+582	4	mass	NONE	air	air
+582	5	mass	NONE	air	air
+582	6	mass	DESTROY	air	-
+582	7	mass	NONE	-	-
+582	8	mass	NONE	-	-
+582	1	updraft	NONE	-	-
+582	2	updraft	NONE	-	-
+582	3	updraft	NONE	-	-
+582	4	updraft	NONE	-	-
+582	5	updraft	NONE	-	-
+582	6	updraft	NONE	-	-
+582	7	updraft	CREATE	-	air
+582	8	updraft	DESTROY	air	-
+582	1	wind	NONE	-	-
+582	2	wind	NONE	-	-
+582	3	wind	NONE	-	-
+582	4	wind	NONE	-	-
+582	5	wind	CREATE	-	certain way
+582	6	wind	MOVE	certain way	certain
+582	7	wind	DESTROY	certain	-
+582	8	wind	NONE	-	-
+583	1	dry , cold high-pressure air	NONE	-	-
+583	2	dry , cold high-pressure air	NONE	-	-
+583	3	dry , cold high-pressure air	CREATE	-	strong updraft
+583	4	dry , cold high-pressure air	MOVE	strong updraft	opposing
+583	5	dry , cold high-pressure air	NONE	opposing	opposing
+583	6	dry , cold high-pressure air	MOVE	opposing	ground
+583	1	funnel	NONE	-	-
+583	2	funnel	NONE	-	-
+583	3	funnel	NONE	-	-
+583	4	funnel	NONE	-	-
+583	5	funnel	CREATE	-	ground
+583	6	funnel	NONE	ground	ground
+583	1	rotation	NONE	-	-
+583	2	rotation	NONE	-	-
+583	3	rotation	NONE	-	-
+583	4	rotation	CREATE	-	air
+583	5	rotation	MOVE	air	violent
+583	6	rotation	NONE	violent	violent
+583	1	updraft	NONE	-	-
+583	2	updraft	CREATE	-	strong
+583	3	updraft	DESTROY	strong	-
+583	4	updraft	NONE	-	-
+583	5	updraft	NONE	-	-
+583	6	updraft	NONE	-	-
+463	1	ice particle	NONE	-	-
+463	2	ice particle	NONE	-	-
+463	3	ice particle	CREATE	-	condensation
+463	4	ice particle	MOVE	condensation	surface
+463	5	ice particle	NONE	surface	surface
+463	1	hailstone	MOVE	?	surface
+463	2	hailstone	NONE	surface	surface
+463	3	hailstone	NONE	surface	surface
+463	4	hailstone	NONE	surface	surface
+463	5	hailstone	MOVE	surface	earth
+463	1	raindrop	MOVE	?	thunderstorm carry
+463	2	raindrop	MOVE	thunderstorm carry	small partus
+463	3	raindrop	MOVE	small partus	condensation nucleus and freeze
+463	4	raindrop	DESTROY	condensation nucleus and freeze	-
+463	5	raindrop	NONE	-	-
+465	1	hail	NONE	-	-
+465	2	hail	NONE	-	-
+465	3	hail	NONE	-	-
+465	4	hail	NONE	-	-
+465	5	hail	CREATE	-	earth
+465	6	hail	DESTROY	earth	-
+465	7	hail	CREATE	-	ground
+465	1	water	MOVE	?	wind that
+465	2	water	NONE	wind that	wind that
+465	3	water	DESTROY	wind that	-
+465	4	water	NONE	-	-
+465	5	water	NONE	-	-
+465	6	water	NONE	-	-
+465	7	water	NONE	-	-
+249	1	rock	NONE	-	-
+249	2	rock	NONE	-	-
+249	3	rock	NONE	-	-
+249	4	rock	CREATE	-	rock
+249	5	rock	NONE	rock	rock
+249	6	rock	NONE	rock	rock
+249	7	rock	NONE	rock	rock
+249	8	rock	DESTROY	rock	-
+249	1	certain type of rock	MOVE	?	rock
+249	2	certain type of rock	DESTROY	rock	-
+249	3	certain type of rock	NONE	-	-
+249	4	certain type of rock	NONE	-	-
+249	5	certain type of rock	NONE	-	-
+249	6	certain type of rock	NONE	-	-
+249	7	certain type of rock	CREATE	-	rock
+249	8	certain type of rock	MOVE	rock	solution
+249	1	smaller piece	NONE	-	-
+249	2	smaller piece	NONE	-	-
+249	3	smaller piece	CREATE	-	rock
+249	4	smaller piece	NONE	rock	rock
+249	5	smaller piece	NONE	rock	rock
+249	6	smaller piece	NONE	rock	rock
+249	7	smaller piece	DESTROY	rock	-
+249	8	smaller piece	NONE	-	-
+249	1	new type of rock	NONE	-	-
+249	2	new type of rock	NONE	-	-
+249	3	new type of rock	NONE	-	-
+249	4	new type of rock	NONE	-	-
+249	5	new type of rock	CREATE	-	rock
+249	6	new type of rock	MOVE	rock	new
+249	7	new type of rock	MOVE	new	rock
+249	8	new type of rock	NONE	rock	rock
+249	1	new substance	NONE	-	-
+249	2	new substance	NONE	-	-
+249	3	new substance	NONE	-	-
+249	4	new substance	NONE	-	-
+249	5	new substance	CREATE	-	rock
+249	6	new substance	NONE	rock	rock
+249	7	new substance	DESTROY	rock	-
+249	8	new substance	NONE	-	-
+249	1	oxygen	NONE	-	-
+249	2	oxygen	NONE	-	-
+249	3	oxygen	NONE	-	-
+249	4	oxygen	CREATE	-	rock
+249	5	oxygen	NONE	rock	rock
+249	6	oxygen	DESTROY	rock	-
+249	7	oxygen	NONE	-	-
+249	8	oxygen	NONE	-	-
+37	1	soft tissue	MOVE	?	environment
+37	2	soft tissue	MOVE	environment	mud and silt
+37	3	soft tissue	NONE	mud and silt	mud and silt
+37	4	soft tissue	DESTROY	mud and silt	-
+37	5	soft tissue	NONE	-	-
+37	6	soft tissue	NONE	-	-
+37	1	plant	DESTROY	?	-
+37	2	plant	NONE	-	-
+37	3	plant	NONE	-	-
+37	4	plant	NONE	-	-
+37	5	plant	NONE	-	-
+37	6	plant	NONE	-	-
+37	1	animal	DESTROY	?	-
+37	2	animal	NONE	-	-
+37	3	animal	NONE	-	-
+37	4	animal	NONE	-	-
+37	5	animal	NONE	-	-
+37	6	animal	NONE	-	-
+37	1	bone	CREATE	-	environment
+37	2	bone	MOVE	environment	mud
+37	3	bone	NONE	mud	mud
+37	4	bone	NONE	mud	mud
+37	5	bone	MOVE	mud	seep
+37	6	bone	MOVE	seep	mud
+37	1	mineral	NONE	-	-
+37	2	mineral	NONE	-	-
+37	3	mineral	NONE	-	-
+37	4	mineral	NONE	-	-
+37	5	mineral	CREATE	-	bone
+37	6	mineral	MOVE	bone	mud
+37	1	fossil	NONE	-	-
+37	2	fossil	NONE	-	-
+37	3	fossil	NONE	-	-
+37	4	fossil	NONE	-	-
+37	5	fossil	NONE	-	-
+37	6	fossil	CREATE	-	mud
+38	1	rock	NONE	-	-
+38	2	rock	NONE	-	-
+38	3	rock	NONE	-	-
+38	4	rock	NONE	-	-
+38	5	rock	CREATE	-	body
+38	6	rock	DESTROY	body	-
+38	7	rock	NONE	-	-
+38	1	animal	NONE	-	-
+38	2	animal	NONE	-	-
+38	3	animal	NONE	-	-
+38	4	animal	NONE	-	-
+38	5	animal	NONE	-	-
+38	6	animal	NONE	-	-
+38	7	animal	NONE	-	-
+38	1	soil	NONE	-	-
+38	2	soil	NONE	-	-
+38	3	soil	CREATE	-	body
+38	4	soil	NONE	body	body
+38	5	soil	NONE	body	body
+38	6	soil	NONE	body	body
+38	7	soil	NONE	body	body
+38	1	body	NONE	-	-
+38	2	body	NONE	-	-
+38	3	body	NONE	-	-
+38	4	body	CREATE	-	soil
+38	5	body	MOVE	soil	time
+38	6	body	MOVE	time	body
+38	7	body	NONE	body	body
+38	1	fossil	NONE	-	-
+38	2	fossil	NONE	-	-
+38	3	fossil	NONE	-	-
+38	4	fossil	NONE	-	-
+38	5	fossil	NONE	-	-
+38	6	fossil	NONE	-	-
+38	7	fossil	CREATE	-	soil form around the body
+152	1	cloud droplet	NONE	-	-
+152	2	cloud droplet	NONE	-	-
+152	3	cloud droplet	NONE	-	-
+152	4	cloud droplet	NONE	-	-
+152	5	cloud droplet	CREATE	-	atmosphere
+152	6	cloud droplet	NONE	atmosphere	atmosphere
+152	1	solid	NONE	-	-
+152	2	solid	NONE	-	-
+152	3	solid	NONE	-	-
+152	4	solid	CREATE	-	?
+152	5	solid	DESTROY	?	-
+152	6	solid	NONE	-	-
+152	1	vapor	MOVE	water	atmosphere
+152	2	vapor	DESTROY	atmosphere	-
+152	3	vapor	NONE	-	-
+152	4	vapor	NONE	-	-
+152	5	vapor	NONE	-	-
+152	6	vapor	NONE	-	-
+152	1	water vapor	MOVE	water	atmosphere
+152	2	water vapor	DESTROY	atmosphere	-
+152	3	water vapor	NONE	-	-
+152	4	water vapor	NONE	-	-
+152	5	water vapor	NONE	-	-
+152	6	water vapor	NONE	-	-
+152	1	lift vapor	NONE	-	-
+152	2	lift vapor	NONE	-	-
+152	3	lift vapor	NONE	-	-
+152	4	lift vapor	NONE	-	-
+152	5	lift vapor	NONE	-	-
+152	6	lift vapor	NONE	-	-
+67	1	dead plant	NONE	plant	plant
+67	2	dead plant	MOVE	plant	swamp
+67	3	dead plant	NONE	swamp	swamp
+67	4	dead plant	MOVE	swamp	area
+67	5	dead plant	MOVE	area	swamp
+67	6	dead plant	DESTROY	swamp	-
+67	7	dead plant	NONE	-	-
+67	8	dead plant	NONE	-	-
+67	9	dead plant	NONE	-	-
+67	1	plant	NONE	-	-
+67	2	plant	CREATE	-	plant
+67	3	plant	MOVE	plant	swamp
+67	4	plant	MOVE	swamp	area
+67	5	plant	DESTROY	area	-
+67	6	plant	NONE	-	-
+67	7	plant	NONE	-	-
+67	8	plant	NONE	-	-
+67	9	plant	NONE	-	-
+67	1	coal	NONE	-	-
+67	2	coal	NONE	-	-
+67	3	coal	NONE	-	-
+67	4	coal	NONE	-	-
+67	5	coal	NONE	-	-
+67	6	coal	NONE	-	-
+67	7	coal	NONE	-	-
+67	8	coal	NONE	-	-
+67	9	coal	NONE	-	-
+67	1	peat	NONE	-	-
+67	2	peat	NONE	-	-
+67	3	peat	NONE	-	-
+67	4	peat	NONE	-	-
+67	5	peat	CREATE	-	area
+67	6	peat	NONE	area	area
+67	7	peat	MOVE	area	swamp
+67	8	peat	DESTROY	swamp	-
+67	9	peat	NONE	-	-
+68	1	heat	NONE	-	-
+68	2	heat	NONE	-	-
+68	3	heat	NONE	-	-
+68	4	heat	NONE	-	-
+68	5	heat	NONE	-	-
+68	6	heat	NONE	-	-
+68	7	heat	NONE	-	-
+68	1	burial peat	NONE	-	-
+68	2	burial peat	NONE	-	-
+68	3	burial peat	NONE	-	-
+68	4	burial peat	NONE	-	-
+68	5	burial peat	NONE	-	-
+68	6	burial peat	NONE	-	-
+68	7	burial peat	NONE	-	-
+68	1	plant and tree remain	DESTROY	?	-
+68	2	plant and tree remain	CREATE	-	bottom of steamy , swampy area
+68	3	plant and tree remain	DESTROY	bottom of steamy , swampy area	-
+68	4	plant and tree remain	NONE	-	-
+68	5	plant and tree remain	NONE	-	-
+68	6	plant and tree remain	NONE	-	-
+68	7	plant and tree remain	NONE	-	-
+68	1	plant	NONE	-	-
+68	2	plant	NONE	-	-
+68	3	plant	NONE	-	-
+68	4	plant	NONE	-	-
+68	5	plant	NONE	-	-
+68	6	plant	NONE	-	-
+68	7	plant	NONE	-	-
+68	1	tree	DESTROY	?	-
+68	2	tree	NONE	-	-
+68	3	tree	NONE	-	-
+68	4	tree	NONE	-	-
+68	5	tree	NONE	-	-
+68	6	tree	NONE	-	-
+68	7	tree	NONE	-	-
+68	1	coal	NONE	-	-
+68	2	coal	NONE	-	-
+68	3	coal	NONE	-	-
+68	4	coal	NONE	-	-
+68	5	coal	NONE	-	-
+68	6	coal	NONE	-	-
+68	7	coal	CREATE	-	increase
+68	1	peat	NONE	-	-
+68	2	peat	NONE	-	-
+68	3	peat	NONE	-	-
+68	4	peat	CREATE	-	bottom of steamy , swampy area
+68	5	peat	DESTROY	bottom of steamy , swampy area	-
+68	6	peat	CREATE	-	material
+68	7	peat	DESTROY	material	-
+68	1	water	NONE	-	-
+68	2	water	NONE	-	-
+68	3	water	NONE	-	-
+68	4	water	NONE	-	-
+68	5	water	NONE	-	-
+68	6	water	CREATE	-	material
+68	7	water	DESTROY	material	-
+69	1	sedimentary rock	NONE	-	-
+69	2	sedimentary rock	NONE	-	-
+69	3	sedimentary rock	NONE	-	-
+69	4	sedimentary rock	NONE	-	-
+69	5	sedimentary rock	CREATE	-	sand
+69	6	sedimentary rock	NONE	sand	sand
+69	7	sedimentary rock	MOVE	sand	bottom of swamp
+69	1	sand	NONE	-	-
+69	2	sand	NONE	-	-
+69	3	sand	CREATE	-	bottom of swamp
+69	4	sand	MOVE	bottom of swamp	peat
+69	5	sand	DESTROY	peat	-
+69	6	sand	NONE	-	-
+69	7	sand	NONE	-	-
+69	1	plant	NONE	-	-
+69	2	plant	CREATE	-	bottom of swamp
+69	3	plant	DESTROY	bottom of swamp	-
+69	4	plant	NONE	-	-
+69	5	plant	NONE	-	-
+69	6	plant	NONE	-	-
+69	7	plant	NONE	-	-
+69	1	tree	NONE	-	-
+69	2	tree	CREATE	-	bottom of swamp
+69	3	tree	DESTROY	bottom of swamp	-
+69	4	tree	NONE	-	-
+69	5	tree	NONE	-	-
+69	6	tree	NONE	-	-
+69	7	tree	NONE	-	-
+69	1	coal	NONE	-	-
+69	2	coal	NONE	-	-
+69	3	coal	NONE	-	-
+69	4	coal	NONE	-	-
+69	5	coal	NONE	-	-
+69	6	coal	NONE	-	-
+69	7	coal	CREATE	-	peat
+69	1	pressure	NONE	-	-
+69	2	pressure	NONE	-	-
+69	3	pressure	NONE	-	-
+69	4	pressure	NONE	-	-
+69	5	pressure	NONE	-	-
+69	6	pressure	NONE	-	-
+69	7	pressure	NONE	-	-
+69	1	peat	NONE	-	-
+69	2	peat	NONE	-	-
+69	3	peat	CREATE	-	bottom of swamp
+69	4	peat	NONE	bottom of swamp	bottom of swamp
+69	5	peat	DESTROY	bottom of swamp	-
+69	6	peat	CREATE	-	sand
+69	7	peat	MOVE	sand	coal
+69	1	water	NONE	-	-
+69	2	water	NONE	-	-
+69	3	water	NONE	-	-
+69	4	water	NONE	-	-
+69	5	water	NONE	-	-
+69	6	water	CREATE	-	bottom of swamp
+69	7	water	DESTROY	bottom of swamp	-
+69	1	clay	NONE	-	-
+69	2	clay	NONE	-	-
+69	3	clay	CREATE	-	bottom of swamp
+69	4	clay	NONE	bottom of swamp	bottom of swamp
+69	5	clay	MOVE	bottom of swamp	rock
+69	6	clay	MOVE	rock	peat
+69	7	clay	DESTROY	peat	-
+70	1	rain	MOVE	?	there
+70	2	rain	MOVE	there	river or lake get higher
+70	3	rain	MOVE	river or lake get higher	ground
+70	4	rain	NONE	ground	ground
+70	5	rain	NONE	ground	ground
+70	6	rain	NONE	ground	ground
+70	7	rain	NONE	ground	ground
+70	8	rain	NONE	ground	ground
+70	1	water level	MOVE	?	there
+70	2	water level	MOVE	there	river
+70	3	water level	MOVE	river	ground
+70	4	water level	NONE	ground	ground
+70	5	water level	NONE	ground	ground
+70	6	water level	DESTROY	ground	-
+70	7	water level	NONE	-	-
+70	8	water level	NONE	-	-
+70	1	stream	NONE	-	-
+70	2	stream	NONE	-	-
+70	3	stream	NONE	-	-
+70	4	stream	NONE	-	-
+70	5	stream	NONE	-	-
+70	6	stream	NONE	-	-
+70	7	stream	CREATE	-	rest
+70	8	stream	NONE	rest	rest
+70	1	water	MOVE	?	there
+70	2	water	MOVE	there	river
+70	3	water	MOVE	river	ground
+70	4	water	MOVE	ground	street
+70	5	water	DESTROY	street	-
+70	6	water	CREATE	-	house
+70	7	water	MOVE	house	stream
+70	8	water	MOVE	stream	rest
+99	1	cloud	MOVE	?	sky
+99	2	cloud	NONE	sky	sky
+99	3	cloud	MOVE	sky	rain
+99	4	cloud	MOVE	rain	side of the obstacle
+99	5	cloud	MOVE	side of the obstacle	side
+99	6	cloud	NONE	side	side
+99	7	cloud	MOVE	side	area
+99	1	a very different ecosystem	NONE	-	-
+99	2	a very different ecosystem	NONE	-	-
+99	3	a very different ecosystem	NONE	-	-
+99	4	a very different ecosystem	NONE	-	-
+99	5	a very different ecosystem	NONE	-	-
+99	6	a very different ecosystem	CREATE	-	area
+99	7	a very different ecosystem	NONE	area	area
+99	1	rain	MOVE	?	sky
+99	2	rain	MOVE	sky	rain cloud travel across the sky
+99	3	rain	MOVE	rain cloud travel across the sky	sky
+99	4	rain	MOVE	sky	side
+99	5	rain	NONE	side	side
+99	6	rain	MOVE	side	area
+99	7	rain	DESTROY	area	-
+99	1	rain cloud	MOVE	?	sky
+99	2	rain cloud	NONE	sky	sky
+99	3	rain cloud	MOVE	sky	rain
+99	4	rain cloud	MOVE	rain	side
+99	5	rain cloud	NONE	side	side
+99	6	rain cloud	DESTROY	side	-
+99	7	rain cloud	NONE	-	-
+99	1	desert	NONE	-	-
+99	2	desert	NONE	-	-
+99	3	desert	NONE	-	-
+99	4	desert	NONE	-	-
+99	5	desert	NONE	-	-
+99	6	desert	NONE	-	-
+99	7	desert	CREATE	-	area
+903	1	image	NONE	-	-
+903	2	image	NONE	-	-
+903	3	image	NONE	-	-
+903	4	image	NONE	-	-
+903	5	image	CREATE	-	brain
+903	1	light	MOVE	?	lens
+903	2	light	DESTROY	lens	-
+903	3	light	CREATE	-	retina
+903	4	light	NONE	retina	retina
+903	5	light	NONE	retina	retina
+903	1	visible light	MOVE	?	lens
+903	2	visible light	MOVE	lens	retina
+903	3	visible light	MOVE	retina	lens
+903	4	visible light	DESTROY	lens	-
+903	5	visible light	NONE	-	-
+903	1	chemical energy	NONE	-	-
+903	2	chemical energy	NONE	-	-
+903	3	chemical energy	NONE	-	-
+903	4	chemical energy	CREATE	-	lens
+903	5	chemical energy	DESTROY	lens	-
+904	1	electrical pulse	NONE	-	-
+904	2	electrical pulse	NONE	-	-
+904	3	electrical pulse	CREATE	-	retina
+904	4	electrical pulse	MOVE	retina	optic
+904	5	electrical pulse	NONE	optic	optic
+904	1	light	DESTROY	?	-
+904	2	light	NONE	-	-
+904	3	light	NONE	-	-
+904	4	light	NONE	-	-
+904	5	light	NONE	-	-
+904	1	small image	MOVE	?	cornea
+904	2	small image	MOVE	cornea	retina
+904	3	small image	NONE	retina	retina
+904	4	small image	NONE	retina	retina
+904	5	small image	DESTROY	retina	-
+904	1	retina 's rod and cone	MOVE	?	retina
+904	2	retina 's rod and cone	NONE	retina	retina
+904	3	retina 's rod and cone	MOVE	retina	electrical pulse
+904	4	retina 's rod and cone	MOVE	electrical pulse	optic
+904	5	retina 's rod and cone	DESTROY	optic	-
