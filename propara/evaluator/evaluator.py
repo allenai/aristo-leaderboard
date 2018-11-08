@@ -27,14 +27,18 @@ def main(answers_file: str, predictions_file: str, output_file: str, diagnostics
     predictions = ActionFile.from_file(predictions_file)
     answers = ActionFile.from_file(answers_file)
 
-    # Warn if there are differences
+    # Abort if there are differences
     diff_report = answers.diff_participants(predictions)
     if diff_report:
-        print(f"Warning: Participants in predictions file {predictions_file} are not exact matches to participants")
-        print(f"in {answers_file}. Your scores will be affected negatively. Detailed report:")
+        print(f"Participants in predictions file {predictions_file} are not exact matches to participants")
+        print(f"in {answers_file}. Detailed report:")
         print()
         print("\n".join(diff_report))
         print()
+        corrupted_action_file(
+            filename=predictions_file,
+            details=f"Some participants are missing or unexpected."
+        )
 
     predictions_summary = predictions.summarize()
     answers_summary = answers.summarize()

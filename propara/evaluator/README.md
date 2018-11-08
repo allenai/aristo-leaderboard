@@ -97,6 +97,8 @@ The first three columns are fixed, and provided to you:
 * **Sentence** (column 2): This is the sentence number (starting with 1) in the process paragraph.
 * **Participant(s)** (column 3): This is usually a span from the process paragraph identifying an interesting participant. It may contain a `;` character to delimit alternative participants (e.g., coreferent mentions of `sunlight` and `light`.) See section **Scoring each process** for another example.
 
+Your prediction action file must contain these three columns verbatim to be admitted for evaluation.
+
 The last three columns are to be predicted.
 
 * **Action** (column 4): This should describe what happens to the participant in this sentence. It must be one of `NONE`, `CREATE`, `MOVE`, or `DESTROY`.
@@ -277,18 +279,22 @@ their use.
 > To see this in the code, look for the function `_compare_locations` and its uses.
 
 **Note about participant comparison:**
+
 > Participants are not normalized before comparison.
 >
 > Your predictor may have selected a participant from the process paragraph that is
 > not the one chosen for you in the answer. From the example above, if you predict
 > an action on the participant `Ants`, but the answer action is on participant `ant`,
-> your predicted action will not be matched and your prediction will be penalized.
+> your predicted action will not be matched.
 >
 > To see this in the code, look for the function `_compare_participants` and its uses.
->
+> 
 > If your prediction refers to participants that are not in the answers, you'll see a
-> warning and a report alerting you to the difference. You should correct these differences
-> by predicting actions only on the participants chosen for you.
+> report alerting you to the difference and the evaluation will abort. To see this in
+> the code, look for the function `diff_participants` and its use. You should correct
+> these differences by predicting actions only on the participants chosen for you. That is,
+> your prediction's first three columns should match the first three columns of the answer
+> file.
 
 #### Step 4. Calculating an overall score
 

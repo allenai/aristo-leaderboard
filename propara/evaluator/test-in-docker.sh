@@ -39,4 +39,6 @@ if [ "$(cat $T/metrics.json)" != '{"precision": 0.743, "recall": 0.43, "f1": 0.5
     exit 1
 fi
 
+echo $T/metrics.json looks okay.
+
 set +x

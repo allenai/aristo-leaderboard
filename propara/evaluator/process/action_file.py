@@ -86,7 +86,7 @@ class ActionFile(NamedTuple):
 
         return summary_by_process_id
 
-    def diff_participants(self, other: "ActionFile"):
+    def diff_participants(self, other: "ActionFile") -> List[str]:
         report: List[str] = []
 
         for process_id in self.process_ids():
@@ -98,19 +98,17 @@ class ActionFile(NamedTuple):
 
             other_participants = other.participants(process_id)
 
-            missing = []
+            process_report: List[str] = []
             for p in self_participants:
                 if p not in other_participants:
-                    missing.append(p)
-            if missing:
-                report.append(f"Process {process_id} in {other.filename} is missing participants:     {missing}")
+                    process_report.append(f"Process {process_id} in {other.filename}: participant \"{p}\" is missing.")
 
-            unexpected = []
             for op in other_participants:
                 if op not in self_participants:
-                    unexpected.append(op)
-            if unexpected:
-                report.append(f"Process {process_id} in {other.filename} has unexpected participants: {unexpected}")
+                    process_report.append(
+                        f"Process {process_id} in {other.filename}: participant \"{op}\" is unexpected.")
+
+            report += sorted(process_report)
 
         return report
 
