@@ -26,7 +26,7 @@ Evaluated 54 predictions against 54 answers.
 ## Usage
 
 The script requires prediction and answer input files, and produces a report to
-standard out.
+standard out. You'll need Python 3.6 or newer to run it.
 
 Optional:
 
