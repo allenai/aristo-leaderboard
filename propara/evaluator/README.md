@@ -30,9 +30,9 @@ standard out. You'll need Python 3.6 or newer to run it.
 
 Optional:
 
-* the flag `--output` writes the overall precision, recall and F1 score to a JSON file.
-* the flag `--diagnostics` writes a diagnostic file with process summaries (an intermediate representation of each process) and their scores.
-* the flag `--sentences` reads sentences from a sentences file and includes them in the diagnostics file. See [sentences.tsv files in the ../data directory](../data/).
+* the argument `--output` writes the overall precision, recall and F1 score to a JSON file.
+* the argument `--diagnostics` writes a diagnostic file with process summaries (an intermediate representation of each process) and their scores.
+* the argument `--sentences` reads sentences from a sentences file and includes them in the diagnostics file. See [sentences.tsv files in the ../data directory](../data/).
 
 ## Evaluation process
 
