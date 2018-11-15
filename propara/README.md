@@ -1,6 +1,6 @@
 # ProPara
 
-* [evaluator](evaluator/) is the program used by the [AI2 ProPara Leaderboard](https://leaderboard.allenai.org/) to evaluate submitted predictions.
+* [evaluator](evaluator/) is the program used by the [ProPara Leaderboard](https://leaderboard.allenai.org/) to evaluate submitted predictions.
 * [data](data/) contains dev, train and test datasets
 
 ## Example usage
