@@ -2,3 +2,5 @@ This repository contains tools for generating datasets and evaluating prediction
 
 * [ARC (AI2 Reasoning Challenge)](arc/)
 * [OpenBook QA](openbookqa/)
+* [ProPara](propara/)
+* [SciTail](scitail/)
