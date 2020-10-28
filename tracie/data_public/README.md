@@ -7,6 +7,6 @@ Each example in the file looks like the following:
     "story": "Tom needed to get braces. He was afraid of them. The dentist assured him everything would be fine. Tom had them on for a while. Once removed he felt it was worth it.",
     "gold_label": "contradiction"}
 ```
-and consists of three fields: `story` (or the premise); `query` (or hypothesis) and `gold_label` (the inference label). The testing labels are hidden and replaced with `"-"`
+and consists of three fields: `story` (the premise); `query` (the hypothesis) and `gold_label` (the inference label). The testing labels are hidden and replaced with `"-"`
 
 `train_predictions.txt` shows an example output file that can be used with the evaluator. 
