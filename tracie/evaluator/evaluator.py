@@ -39,10 +39,7 @@ def evaluate(gold_file, prediction_file):
     s_correct = 0
     for key in story_prediction_map:
         s_total += 1
-        cv = True
-        for v in story_prediction_map[key]:
-            cv = cv and v
-        if cv:
+        if all(story_prediction_map[key]):
             s_correct += 1
     total_acc = float(correct) / float(total)
     start_acc = float(correct_start) / float(total_start)
