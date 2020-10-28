@@ -86,5 +86,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#print(evaluate("iid/test.jsonl", "sample_prediction_iid.txt"))
