@@ -10,7 +10,7 @@ This script evaluates NLI predictions against correct inferences and produces 4 
 {"total_acc": 0.5012809564474808, "start_acc": 0.500945179584121, "end_acc": 0.5015576323987538, "story_em": 0.0}
 ```
 
-This uses a dummy train prediction file called `train_predictions.txt` from the training file `train.jsonl` (which predicts entailments for each example), which consists of one label prediction for line:
+This uses a dummy train prediction file called `train_predictions.txt` from the training file `train.jsonl` (which predicts entailments for each example), which consists of one label prediction per line (that is, per example):
 ```
 entailment
 entailment
