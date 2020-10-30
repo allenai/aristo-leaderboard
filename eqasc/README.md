@@ -1,24 +1,14 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/learning-to-explain-datasets-and-models-for/reasoning-chain-explanations-on-eqasc)](https://paperswithcode.com/sota/reasoning-chain-explanations-on-eqasc?p=learning-to-explain-datasets-and-models-for)
 
-Code and Data for our EMNLP 2020 paper titled 'Learning to Explain: Datasets and Models for Identifying Valid Reasoning Chains in Multihop Question-Answering'
+This directory has code and data for the eQASC evaluator, as described in the EMNLP 2020 paper [Learning to Explain: Datasets and Models for Identifying Valid Reasoning Chains in Multihop Question-Answering](https://www.semanticscholar.org/paper/Learning-to-Explain%3A-Datasets-and-Models-for-Valid-Jhamtani-Clark/ebaebfefec9d5c21a4559a1a038743bd437d2f01).
 
-
-### Data
-Data can be downloaded using instructions in data/ReadMe.md
-
-
-### Requirements
-- python 3.7.5
-- pytorch 1.6.0
-- allennlp 0.9.0
-- code/environment.yml is also provided
-
-
-### Code
-Follow code/Readme.md
-
+* [code](code/) holds the evaluator
+* [data/](data/) holds the ... TODO
+* [evaluator_data/eqasc](evaluator_data/eqasc/) holds the labels used by the evaluator
 
 ### Reference
+
+Please cite the work like this:
 
 ```
 @inproceedings{jhamtani2020grc,
@@ -30,4 +20,5 @@ Follow code/Readme.md
 ```
 
 ### Papers-with-code link
+
 https://paperswithcode.com/paper/learning-to-explain-datasets-and-models-for 
