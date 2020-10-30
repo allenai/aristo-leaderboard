@@ -1,4 +1,3 @@
-import json
 import sys
 
 from allennlp_reasoning_explainqa.evaluator.constants import *
@@ -57,6 +56,3 @@ if __name__ == '__main__':
 
     print(f"Writing final metrics to file: {metrics_filename}")
     json.dump(metrics, open(metrics_filename, 'w'))
-
-# env PYTHONPATH=. python allennlp_reasoning_explainqa/evaluator/evaluator.py predictions/grc.test.predict eqasc_test
-# env PYTHONPATH=. python allennlp_reasoning_explainqa/evaluator/evaluator.py predictions/grc.dev.predict eqasc_dev
