@@ -1,0 +1,57 @@
+{
+	"dataset_reader": {
+		"type": "qasc_chain_reader",
+		"tokenizer": {
+			"word_splitter": "bert-basic-custom"
+		},
+		"token_indexers": {
+			"bert": {
+				"type": "bert-pretrained",
+				"pretrained_model": "bert-base-uncased"
+			}
+		},
+		"negative_sampling_rate": 1.0,
+		"negative_sampling_rate_val": 1.0,
+		"skip_negative_choices": true,
+		"use_tag_representation": false
+	},
+	"iterator": {
+		"type": "basic",
+		"batch_size": 32
+	},
+	"model": {
+		"type": "bert_chain_clf",
+		"bert_model": "bert-base-uncased",
+		"dropout": 0.0,
+		"negative_class_weight": 0.3,
+		"classifier_type": "two_layer"
+	},
+	"train_data_path": "../data/eqasc/eqasc_train_grc.json",
+	"validation_data_path": "../data/eqasc/eqasc_dev_grc.json",
+	"trainer": {
+		"cuda_device": 0,
+		"patience": 4,
+		"learning_rate_scheduler": {
+			"type": "slanted_triangular",
+			"cut_frac": 0.1,
+			"num_epochs": 10,
+			"num_steps_per_epoch": 3726
+		},
+		"num_epochs": 16,
+		"num_serialized_models_to_keep": 1,
+		"optimizer": {
+			"type": "bert_adam",
+			"lr": 2e-05,
+			"parameter_groups": [
+				[
+					["bias", "gamma", "beta"], {
+						"weight_decay_rate": 0
+					}
+				]
+			]
+		},
+		"should_log_learning_rate": true,
+		"validation_metric": "+explainP1"
+	},
+	"evaluate_on_test": false
+}

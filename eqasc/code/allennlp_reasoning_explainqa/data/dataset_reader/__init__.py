@@ -1,0 +1,1 @@
+from allennlp_reasoning_explainqa.data.dataset_reader.qasc_chains_reader import QASCChainReader

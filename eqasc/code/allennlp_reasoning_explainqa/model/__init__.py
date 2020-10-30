@@ -1,0 +1,1 @@
+from allennlp_reasoning_explainqa.model.bert_chain_clf import BertChainClassifier
