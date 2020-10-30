@@ -57,3 +57,35 @@ For example:
 
 environment.yml file is provided
 
+## Running in Docker
+
+First, build an image with the evaluator:
+
+```
+docker build -t eqasc-evaluator .
+```
+
+Then run it with the above files like this:
+
+```
+docker run \
+  -e PYTHONPATH=. \
+  -e PYTHONUNBUFFERED=yes \
+  -v $PWD/predictions:/predictions:ro \
+  -v $PWD/../evaluator_data/eqasc:/labels:ro \
+  -v /tmp:/output:rw \
+  --entrypoint python \
+  eqasc-evaluator \
+  allennlp_reasoning_explainqa/evaluator/evaluator.py \
+  /predictions/grc.test.predict \
+  /labels/chainid_to_label_test.json \
+  /output/metrics.json
+```
+
+This will write the file `/tmp/metrics.json` locally:
+
+```
+% cat /metrics.json
+{"auc_roc": 0.8457533894216488, "explainP1": 0.5387978142076503, "explainNDCG": 0.6376201537170901}%   
+```
+
