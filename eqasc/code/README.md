@@ -2,36 +2,19 @@
 
 This script evaluates predictions for eQASC predictions against ground truth annotations and produces metrics.
 
-## Example
-
-```bash
-% PREDICTION_FILE_PATH=predictions/grc.test.predict
-% EVAL_MODE=eqasc_test
-% env PYTHONPATH=. python allennlp_reasoning_explainqa/evaluator/evaluator.py $PREDICTION_FILE_PATH $EVAL_MODE
-
-% cat metrics.json
-{"auc_roc": 0.8457533894216488, "explainP1": 0.5387978142076503, "explainNDCG": 0.6376201537170901}
-```
+Hint: If you are in a hurry and want to simply evaluate your predictions, run the evaluator in Docker.
 
 ## Usage
 
-The script takes one input file and produces one output file. It uses data from ../evaluator_data/
+The program [evaluator.py](allennlp_reasoning_explainqa/evaluator/evaluator.py) takes three arguments:
 
-Evaluator data consists of chain ids as keys with corresponding labels a values. 
-For example:
+1. The filename of a prediction file.
+2. The filename of the labels to evaluate against.
+3. The filename where metrics will be written.
 
-```bash
-% cat ../evaluator_data/eqasc/chainid_to_label_test.json
- {"3GM6G9ZBKNWCBXAS7DE3CDBF13STML_1_7": 0, 
- "3GM6G9ZBKNWCBXAS7DE3CDBF13STML_1_8": 0, 
- "3GM6G9ZBKNWCBXAS7DE3CDBF13STML_1_6": 1, 
-...
-```
+### Prediction file
 
-
-### Input predictions
-
-A predictions file that has predictions in jsonl format. For example:
+The predictions file should hold multiple JSON objects, with each object having a score, and a chain ID. For example:
 
 ```bash
 %  cat predictions/grc.test.predict | head -n 4
@@ -41,21 +24,43 @@ A predictions file that has predictions in jsonl format. For example:
 {"score": 0.8793290853500366, "chain_id": "3C44YUNSI1OBFBB8D36GODNOZN9DPA_1_7"}
 ```
 
-- Prediction file must have the exact same set of `chain_id` as in the `../evaluator_data/eqasc/chainid_to_label_test.json`
+The chain IDs must match those in the labels. (See below.)
 
+The file `predictions/grc.test.predict` in this repo contains an example
+prediction for the test labels. It was made by doing ... TODO
+
+### Labels file
+
+The labels file holds a single JSON object with keys being chain IDs and values
+being labels. It looks like this:
+
+```
+% cat ../evaluator_data/eqasc/chainid_to_label_test.json
+ {"3GM6G9ZBKNWCBXAS7DE3CDBF13STML_1_7": 0, 
+ "3GM6G9ZBKNWCBXAS7DE3CDBF13STML_1_8": 0, 
+ "3GM6G9ZBKNWCBXAS7DE3CDBF13STML_1_6": 1, 
+...
+```
+
+The file `../evaluator_data/eqasc/chainid_to_label_test.json` in this repo
+contains the labels for test chains.
 
 ### Output metrics
 
-A JSON file that has three key-value pairs. The keys are as follows: 1) auc_roc 2) explainP1 3)explainNDCG. 
-For example:
+A "metrics" file will be written that contains evaluation scores.
+
+This file holds a single JSON structure with three key-value pairs. The keys are:
+
+* `auc_roc` -- This is .. TODO
+* `explainP1` -- This is .. TODO
+* `explainNDCG` - This is ... TODO
+
+Example:
+
 ```bash
 % cat metrics.json 
 {"auc_roc": 0.8457533894216488, "explainP1": 0.5387978142076503, "explainNDCG": 0.6376201537170901}
 ```
-
-### Environment
-
-environment.yml file is provided
 
 ## Running in Docker
 
@@ -92,6 +97,28 @@ This evaluates the file `predictions/grc.test.predict` against the labels in
 `/tmp/metrics.json` locally:
 
 ```
-% cat /metrics.json
+% cat /tmp/metrics.json
 {"auc_roc": 0.8457533894216488, "explainP1": 0.5387978142076503, "explainNDCG": 0.6376201537170901}%   
 ```
+
+See below for an explanation of the three arguments to the `evaluator.py` script.
+
+## Running locally
+
+You'll have to install dependencies with Conda, following the environment.yml file.
+
+After you've done that, run the evaluator like this:
+
+```bash
+% env PYTHONPATH=. python allennlp_reasoning_explainqa/evaluator/evaluator.py predictions/grc.test.predict ../evaluator_data/eqasc/labels/chainid_to_label_test.json /tmp/metrics.json
+```
+
+This evaluates the file `predictions/grc.test.predict` against the labels in
+`../evaluator_data/eqasc/chainid_to_label_test.json`, and writes the file
+`/tmp/metrics.json` locally:
+
+```
+% cat /tmp/metrics.json
+{"auc_roc": 0.8457533894216488, "explainP1": 0.5387978142076503, "explainNDCG": 0.6376201537170901}
+```
+
