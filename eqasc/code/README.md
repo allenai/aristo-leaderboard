@@ -59,6 +59,11 @@ environment.yml file is provided
 
 ## Running in Docker
 
+The eQASC evaluator has many dependencies, like AllenNLP, so if you only want
+to run the evaluator on a prediction file, this is the easiest way to do so,
+without setting up a local development environment (Conda) with those
+dependencies installed.
+
 First, build an image with the evaluator:
 
 ```
@@ -82,10 +87,11 @@ docker run \
   /output/metrics.json
 ```
 
-This will write the file `/tmp/metrics.json` locally:
+This evaluates the file `predictions/grc.test.predict` against the labels in
+`../evaluator_data/eqasc/chainid_to_label_test.json`, and writes the file
+`/tmp/metrics.json` locally:
 
 ```
 % cat /metrics.json
 {"auc_roc": 0.8457533894216488, "explainP1": 0.5387978142076503, "explainNDCG": 0.6376201537170901}%   
 ```
-
