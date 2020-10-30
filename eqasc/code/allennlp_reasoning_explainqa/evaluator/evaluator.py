@@ -6,17 +6,17 @@ from allennlp_reasoning_explainqa.training.metrics.confusion_matrix import *
 from allennlp_reasoning_explainqa.training.metrics.explanation_eval import *
 
 
-def evaluate_eqasc(fname1, split):
-    data = open(fname1, 'r').readlines()
-    assert len(data) == eqasc_test_total_chain_cnt
-    data = [json.loads(row) for row in data]
-    chainid_to_label = json.load(open('../evaluator_data/eqasc/chainid_to_label_' + split + '.json', 'r'))
+def evaluate(prediction_filename, label_filename):
+    predictions = open(prediction_filename, 'r').readlines()
+    assert len(predictions) == eqasc_test_total_chain_cnt
+    predictions = [json.loads(row) for row in predictions]
+    chainid_to_label = json.load(open(label_filename, 'r'))
     f1eval = F1MeasureCustomRetrievalEval(pos_label=1, save_fig=False)
     explanation_eval = ExplanationEval()
     chain_ids_covered = []
 
     cnt = 0
-    for row in data:
+    for row in predictions:
         assert 'score' in row, "Prediction should contain field score"
         assert 'chain_id' in row, "Prediction should contain field chain_id"
         score = row['score']
@@ -49,13 +49,8 @@ def evaluate_eqasc(fname1, split):
 
 if __name__ == '__main__':
     prediction_filename = sys.argv[1]
-    mode = sys.argv[2]
-    if mode == 'eqasc_test':
-        final_metrics = evaluate_eqasc(prediction_filename, split='test')
-    elif mode == 'eqasc_dev':
-        final_metrics = evaluate_eqasc(prediction_filename, split='dev')
-    else:
-        raise NotImplementedError
+    label_filename = sys.argv[2]
+    final_metrics = evaluate(prediction_filename, label_filename)
     json.dump(final_metrics, open('metrics.json', 'w'))
 
 # env PYTHONPATH=. python allennlp_reasoning_explainqa/evaluator/evaluator.py predictions/grc.test.predict eqasc_test
