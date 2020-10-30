@@ -48,12 +48,12 @@ def evaluate_eqasc(fname1, split):
 
 
 if __name__ == '__main__':
-    fname = sys.argv[1]
+    prediction_filename = sys.argv[1]
     mode = sys.argv[2]
     if mode == 'eqasc_test':
-        final_metrics = evaluate_eqasc(fname, split='test')
+        final_metrics = evaluate_eqasc(prediction_filename, split='test')
     elif mode == 'eqasc_dev':
-        final_metrics = evaluate_eqasc(fname, split='dev')
+        final_metrics = evaluate_eqasc(prediction_filename, split='dev')
     else:
         raise NotImplementedError
     json.dump(final_metrics, open('metrics.json', 'w'))
