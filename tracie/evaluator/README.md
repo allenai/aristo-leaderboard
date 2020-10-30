@@ -55,8 +55,7 @@ docker run \
   -v $PWD/../data:/data:ro \
   -v /tmp:/output:rw \
   tracie-evaluator \
-  python \
-  /evaluator.py \
+  python /evaluator.py \
   --question_answers /data/train.jsonl \
   --predictions /data/train-dummy-predictions.txt \
   --output /output/metrics.json
