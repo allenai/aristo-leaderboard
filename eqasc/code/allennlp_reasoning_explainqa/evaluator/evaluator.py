@@ -2,7 +2,7 @@ from allennlp_reasoning_explainqa.training.metrics.confusion_matrix import *
 from allennlp_reasoning_explainqa.training.metrics.explanation_eval import *
 from allennlp_reasoning_explainqa.evaluator.constants import *
 import sys
-
+import json
 
 def evaluate_eqasc(fname1, split):
 
