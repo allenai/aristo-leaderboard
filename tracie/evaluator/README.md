@@ -54,8 +54,8 @@ Then run it with the above files like this:
 docker run \
   -v $PWD/../data:/data:ro \
   -v /tmp:/output:rw \
-  --entrypoint python \
   tracie-evaluator \
+  python \
   /evaluator.py \
   --question_answers /data/train.jsonl \
   --predictions /data/train-dummy-predictions.txt \
