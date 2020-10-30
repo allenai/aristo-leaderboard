@@ -50,8 +50,13 @@ def evaluate(prediction_filename, label_filename):
 if __name__ == '__main__':
     prediction_filename = sys.argv[1]
     label_filename = sys.argv[2]
-    final_metrics = evaluate(prediction_filename, label_filename)
-    json.dump(final_metrics, open('metrics.json', 'w'))
+    metrics_filename = sys.argv[3]
+
+    print(f"Evaluating prediction file {prediction_filename} with label file {label_filename}")
+    metrics = evaluate(prediction_filename, label_filename)
+
+    print(f"Writing final metrics to file: {metrics_filename}")
+    json.dump(metrics, open(metrics_filename, 'w'))
 
 # env PYTHONPATH=. python allennlp_reasoning_explainqa/evaluator/evaluator.py predictions/grc.test.predict eqasc_test
 # env PYTHONPATH=. python allennlp_reasoning_explainqa/evaluator/evaluator.py predictions/grc.dev.predict eqasc_dev
