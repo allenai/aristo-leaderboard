@@ -28,19 +28,15 @@ class F1MeasureCustomRetrievalEval():
         mask: ``torch.Tensor``, optional (default = None).
             A masking tensor the same size as ``gold_labels``.
         """
-        # print("[F1MeasureCustomRetrievalEval] label, score = ", label, score)
         self._gt.append(label)
         self._probs.append(score)
 
-    # def get_metric(self, figname='roc_plot.png'):  # -> Dict[str,Float]:
     def get_metric(self, reset: bool = False,
-                   figname='roc_plot.png',
                    given_thresh=None):  # -> Dict[str,Float]:
         probs = np.array(self._probs)
         probs = (probs - probs.min()) / (probs.max() - probs.min())
         gt = np.array(self._gt)
 
-        auc_roc = 0
         threshold_max = None
         f1_score_given_thresh = None
         if reset and len(probs) > 0:
@@ -64,14 +60,12 @@ class F1MeasureCustomRetrievalEval():
                 plt.ylabel('True Positive Rate')
                 plt.title('Receiver operating characteristic example')
                 plt.legend(loc="lower right")
-                # plt.show()
-                # plt.savefig(figname)
             if given_thresh is not None:
                 f1_score_given_thresh = sklearn.metrics.f1_score(gt, [1 if m > given_thresh else 0 for m in probs])
         else:
             auc_roc = 0
             f1_scores_max = 0
-        # print("self._gt Counter ===> ", Counter(gt))
+
         if reset:
             self.reset()
         return {'auc_roc': auc_roc, 'f1_scores_max': f1_scores_max, 'threshold_max': threshold_max, 'f1_score_given_thresh': f1_score_given_thresh}
