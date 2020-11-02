@@ -1,6 +1,7 @@
 from collections import Counter
 from typing import Optional
 
+import matplotlib.pyplot as plt
 import numpy as np
 import sklearn.metrics
 import torch
@@ -46,8 +47,6 @@ class ConfusionMatrix(Metric):
 
     def __str__(self):
         return str(self.cm)  # f"CocovalsMeasures(em={self._total_em}, f1={self._total_f1})"
-
-import matplotlib.pyplot as plt
 
 @Metric.register("f1custom")
 class F1MeasureCustom(Metric):
