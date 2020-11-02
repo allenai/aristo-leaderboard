@@ -1,3 +1,4 @@
+import copy
 import random
 from collections import Counter
 
@@ -64,7 +65,6 @@ class ExplanationEval(Metric):
 
     def __init__(self, pos_label=1, neg_label=0) -> None:
         self._predictions = {}
-        # self._gt = {}
         self._id_count = 0
         self._pos_label = pos_label
         self._neg_label = neg_label
@@ -78,14 +78,12 @@ class ExplanationEval(Metric):
         value : ``float``
             The value to average.
         """
-        # print("[] __call__")
         if choice_type in CORRECT_OPTION_TAG_LIST:
             assert ground_truth_label in self._labels, "Label not known"
             if ques_id not in self._predictions:
                 self._predictions[ques_id] = []
                 self._id_count += 1
             self._predictions[ques_id].append({'score': score, 'ground_truth': ground_truth_label})
-            # self._gt[ques_id].append(ground_truth)
 
     @overrides
     def get_metric(self, reset: bool = False):
@@ -94,21 +92,16 @@ class ExplanationEval(Metric):
         ret = {"explainP1": [], "explainP1_normalized": [], "explainP2": [], "explainP5": [], "explainNDCG": []}
         total_label_counts = {'label_' + str(k): 0 for k in self._labels}
         for id, vals in self._predictions.items():
-            # print(" ======= explain_eval : id = ", id)
             random.shuffle(vals)  # hack to avoid high scores in case of ties and correct ones got in first
             vals = sorted(vals, key=lambda x: -x['score'])  # sort by decreasing order of score
             cnt_pos_flag = 0
-            # cnt_pos = 0
             y_true = [val['ground_truth'] for val in vals]
             y_score = [val['score'] for val in vals]
             total_true = sum(y_true)
             if total_true > 0:
-                # ndcg_exp = ndcg_score(y_true, y_score, k=10, gains="exponential")
                 ndcg = ndcg_score(y_true, y_score, k=10, gains="linear")
             else:
                 ndcg_exp = ndcg = 0
-            # print("id=",id,"y_true, y_score, ndcg = ", y_true, y_score, ndcg)
-            # ret['explainNDCG_exp'].append(ndcg_exp)
             ret['explainNDCG'].append(ndcg)
 
             ndcg_numerator = 0.0
@@ -116,7 +109,6 @@ class ExplanationEval(Metric):
             discount = 1.0
             discount_den = 1.0
             for j, val in enumerate(vals):  # to do what if num items is less than 5 ? -- will effect R@5
-                # print("explain_eval : j = ", j, " | val = ", val)
                 if val['ground_truth'] == self._pos_label:
                     cnt_pos_flag = 1  # since just want to know ehteher it is there or not
                     ndcg_numerator += (discount * 1.0)
@@ -125,7 +117,6 @@ class ExplanationEval(Metric):
                     # cnt_pos += 1
                     ndcg_denominator += (discount_den * 1.0)
                     discount_den *= 0.5
-                    # total_label_counts[self._pos_label] += 1
                     labelk = self._pos_label
                 else:
                     labelk = self._neg_label
@@ -140,10 +131,6 @@ class ExplanationEval(Metric):
             if cnt_pos_flag > 0:
                 ret['explainP1_normalized'].append(ret['explainP1'][-1])
             assert ndcg_numerator <= ndcg_denominator  # sanity check
-            if ndcg_denominator <= 0:
-                ndcg = 0.0
-            else:
-                ndcg = ndcg_numerator / ndcg_denominator
         self.ret = {k: {'items': len(lst), 'score': np.mean(lst)} for k, lst in ret.items()}
         return_metric = {}
         for k, lst in ret.items():
@@ -151,7 +138,6 @@ class ExplanationEval(Metric):
             if len(lst) > 0:
                 return_metric[k] = np.mean(lst)
         return_metric.update(total_label_counts)
-        # print(" === return_metric = ", return_metric)
         if reset:
             self.reset()
         return return_metric
@@ -164,10 +150,7 @@ class ExplanationEval(Metric):
         self.ret = {}
 
     def __str__(self):
-        return str(self.ret)  # f"CocovalsMeasures(em={self._total_em}, f1={self._total_f1})"
-
-
-import copy
+        return str(self.ret)
 
 
 @Metric.register("precision_eval")
