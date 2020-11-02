@@ -1,10 +1,10 @@
 import json
 import sys
 
-from allennlp_reasoning_explainqa.evaluator.constants import *
 from allennlp_reasoning_explainqa.training.metrics.confusion_matrix import *
 from allennlp_reasoning_explainqa.training.metrics.explanation_eval import *
 
+eqasc_test_total_chain_cnt = 9141
 
 def evaluate(prediction_filename, label_filename):
     predictions = open(prediction_filename, 'r').readlines()
