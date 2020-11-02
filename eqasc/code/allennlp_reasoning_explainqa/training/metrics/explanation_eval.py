@@ -101,7 +101,7 @@ class ExplanationEval(Metric):
             if total_true > 0:
                 ndcg = ndcg_score(y_true, y_score, k=10, gains="linear")
             else:
-                ndcg_exp = ndcg = 0
+                ndcg = 0
             ret['explainNDCG'].append(ndcg)
 
             ndcg_numerator = 0.0
