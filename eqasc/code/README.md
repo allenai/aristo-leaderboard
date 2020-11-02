@@ -122,3 +122,7 @@ This evaluates the file `predictions/grc.test.predict` against the labels in
 {"auc_roc": 0.8457533894216488, "explainP1": 0.5387978142076503, "explainNDCG": 0.6376201537170901}
 ```
 
+## Testing
+
+The script `test-with-docker.sh` uses the Docker method to exercise the
+evaluator and confirm expected scores.
