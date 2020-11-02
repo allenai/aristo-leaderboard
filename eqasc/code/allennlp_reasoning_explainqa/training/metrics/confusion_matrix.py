@@ -1,25 +1,14 @@
-from typing import Tuple
-
-from overrides import overrides
-
-# from allennlp.tools import squad_eval
-from allennlp.training.metrics.metric import Metric
-
-import os
-import json
-import copy
-from sklearn.metrics import confusion_matrix
-import sklearn.metrics
-import numpy as np
-import torch
-import random
+from collections import Counter
 from typing import Optional
+
+import numpy as np
+import sklearn.metrics
+import torch
 from allennlp.common.checks import ConfigurationError
 from allennlp.training.metrics.metric import Metric
+from overrides import overrides
+from sklearn.metrics import confusion_matrix
 from sklearn.metrics import precision_recall_fscore_support
-
-from sklearn.metrics import precision_recall_fscore_support
-from collections import Counter
 from sklearn.metrics import roc_curve
 
 
