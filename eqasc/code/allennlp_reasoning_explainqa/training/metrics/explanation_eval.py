@@ -1,10 +1,7 @@
-import copy
 import random
 from collections import Counter
 
 import numpy as np
-from allennlp.training.metrics.metric import Metric
-from overrides import overrides
 
 from allennlp_reasoning_explainqa.common.constants import *
 
@@ -60,8 +57,7 @@ def ndcg_score(y_true, y_score, k=10, gains="exponential"):
     return actual / best
 
 
-@Metric.register("explanation_eval")
-class ExplanationEval(Metric):
+class ExplanationEval:
 
     def __init__(self, pos_label=1, neg_label=0) -> None:
         self._predictions = {}
@@ -70,7 +66,6 @@ class ExplanationEval(Metric):
         self._neg_label = neg_label
         self._labels = [pos_label, neg_label]
 
-    @overrides
     def __call__(self, ques_id, choice_type, ground_truth_label, score):
         """
         Parameters
@@ -85,7 +80,6 @@ class ExplanationEval(Metric):
                 self._id_count += 1
             self._predictions[ques_id].append({'score': score, 'ground_truth': ground_truth_label})
 
-    @overrides
     def get_metric(self, reset: bool = False):
         if reset:
             print("explain_eval: Counter(len(vals)) : ", Counter([len(val) for val in self._predictions.values()]))
@@ -142,7 +136,6 @@ class ExplanationEval(Metric):
             self.reset()
         return return_metric
 
-    @overrides
     def reset(self):
         self._predictions = {}
         # self._gt = {}
@@ -151,88 +144,6 @@ class ExplanationEval(Metric):
 
     def __str__(self):
         return str(self.ret)
-
-
-@Metric.register("precision_eval")
-class PrecisionEval(Metric):
-
-    def __init__(self, use_aggregate_scoring: bool = True) -> None:
-        self._predictions = {}
-        self._id_option_to_type = {}
-        # self._gt = {}
-        self._id_count = 0
-        self.ret = {}
-        self._use_aggregate_scoring = use_aggregate_scoring
-
-    @overrides
-    def __call__(self, ques_id, choice_type, ground_truth_label, score, option=None):
-        assert choice_type in ALL_OPTION_TAG_LIST, "choice_type " + str(choice_type) + " not undertstood"
-        if ques_id not in self._predictions:
-            self._predictions[ques_id] = []
-            self._id_count += 1
-        self._predictions[ques_id].append({'score': score, 'choice_type': choice_type, 'option': option})
-        # self._gt[ques_id].append(ground_truth)
-
-    def _group_by_choice(self):
-        ret = {}
-        chains_per_id = {}
-        for k, vals in self._predictions.items():
-            chains_per_id[id] = len(vals)
-            tmp = {}
-            ret[k] = []
-            for val in vals:
-                option = val['option']
-                if option not in tmp:
-                    tmp[option] = []
-                tmp[option].append(val)
-            # ret[k] = copy.deepcopy( vals[0] )
-            for option in tmp:
-                tmp[option] = sorted(tmp[option], key=lambda x: -x['score'])
-                ret[k].append(copy.deepcopy(tmp[option][0]))
-                if self._use_aggregate_scoring:
-                    ret[k][-1].update({'score': self._get_aggreagte_score(tmp[option])})
-        print('chains_per_id', Counter(chains_per_id.values()))
-        return ret
-
-    @overrides
-    def get_metric(self, reset: bool = False, eval_with_aggregation: bool = False):
-        ret = {"QA_R1": [], "QA_R2": [], "QA_R5": []}
-        predictions_to_use = self._predictions
-        if eval_with_aggregation:
-            predictions_to_use = self._group_by_choice()
-        for id, vals in predictions_to_use.items():
-            # keep a track
-            vals = sorted(vals, key=lambda x: -x['score'])  # sort by decreasing order of score
-            cnt_pos = 0
-            for j, val in enumerate(vals):  # to do what if num items is less than 5 ? -- will effect R@5
-                if val['choice_type'] in CORRECT_OPTION_TAG_LIST:
-                    cnt_pos = 1  # since just want to know ehteher it is there or not
-                if j == 0:
-                    ret['QA_R1'].append(cnt_pos)
-                elif j == 1:
-                    ret['QA_R2'].append(cnt_pos)
-                elif j == 4:
-                    ret['QA_R5'].append(cnt_pos)
-            # if cnt_pos is not 0, then print/add to list
-        self.ret = {k: {'items': len(lst), 'score': np.mean(lst)} for k, lst in ret.items()}
-        return_metric = {}
-        for k, lst in ret.items():
-            return_metric[k + '_items'] = len(lst)
-            if len(lst) > 0:
-                return_metric[k] = np.mean(lst)
-        # print(" === return_metric = ", return_metric)
-        if reset:
-            self.reset()
-        return return_metric
-
-    @overrides
-    def reset(self):
-        self._predictions = {}
-        # self._gt = {}
-        self._id_count = 0
-
-    def __str__(self):
-        return str(self.ret)  # f"CocovalsMeasures(em={self._total_em}, f1={self._total_f1})"
 
 
 if __name__ == '__main__':
