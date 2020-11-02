@@ -18,7 +18,3 @@ Please cite the work like this:
   year={2020}
 }
 ```
-
-### Papers-with-code link
-
-https://paperswithcode.com/paper/learning-to-explain-datasets-and-models-for 
