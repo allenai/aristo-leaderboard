@@ -173,18 +173,6 @@ class PrecisionEval(Metric):
         self._predictions[ques_id].append({'score': score, 'choice_type': choice_type, 'option': option})
         # self._gt[ques_id].append(ground_truth)
 
-    def _get_aggregate_score(self, sorted_lst, max_k=5):
-        discount = 1.0
-        ret = 0.0
-        den = 0.0
-        for k, val in enumerate(sorted_lst):
-            if k >= max_k:
-                break
-            ret += (val['score'] * discount)
-            den += discount
-            discount *= 0.5
-        return ret / den
-
     def _group_by_choice(self):
         ret = {}
         chains_per_id = {}
