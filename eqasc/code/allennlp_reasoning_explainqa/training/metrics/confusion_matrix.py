@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import sklearn.metrics
 from sklearn.metrics import roc_curve
@@ -6,12 +5,11 @@ from sklearn.metrics import roc_curve
 
 class F1MeasureCustomRetrievalEval:
 
-    def __init__(self, pos_label=1, save_fig=False) -> None:
+    def __init__(self, pos_label=1) -> None:
         self._predictions = []
         self._gt = []
         self._pos_label = pos_label
         self._probs = []
-        self.save_fig = save_fig
 
     def __call__(self,
                  label, score):
@@ -47,17 +45,6 @@ class F1MeasureCustomRetrievalEval:
             f1_scores_max = np.max(f1_scores)
             threshold_max = thresholds[np.argmax(f1_scores)]
             auc_roc = sklearn.metrics.roc_auc_score(gt, probs)
-            lw = 2
-            if self.save_fig:
-                plt.plot(fpr, tpr, color='darkorange',
-                         lw=lw, label='ROC curve (area = %0.2f)' % auc_roc)
-                plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
-                plt.xlim([0.0, 1.0])
-                plt.ylim([0.0, 1.05])
-                plt.xlabel('False Positive Rate')
-                plt.ylabel('True Positive Rate')
-                plt.title('Receiver operating characteristic example')
-                plt.legend(loc="lower right")
             if given_thresh is not None:
                 f1_score_given_thresh = sklearn.metrics.f1_score(gt, [1 if m > given_thresh else 0 for m in probs])
         else:

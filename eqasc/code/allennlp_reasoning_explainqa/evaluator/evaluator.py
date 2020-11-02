@@ -12,7 +12,7 @@ def evaluate(prediction_filename, label_filename):
     assert len(predictions) == eqasc_test_total_chain_cnt
     predictions = [json.loads(row) for row in predictions]
     chainid_to_label = json.load(open(label_filename, 'r'))
-    f1eval = F1MeasureCustomRetrievalEval(pos_label=1, save_fig=False)
+    f1eval = F1MeasureCustomRetrievalEval(pos_label=1)
     explanation_eval = ExplanationEval()
     chain_ids_covered = []
 
