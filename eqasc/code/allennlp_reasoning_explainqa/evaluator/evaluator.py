@@ -6,6 +6,7 @@ from allennlp_reasoning_explainqa.training.metrics.explanation_eval import *
 
 eqasc_test_total_chain_cnt = 9141
 
+
 def evaluate(prediction_filename, label_filename):
     predictions = open(prediction_filename, 'r').readlines()
     assert len(predictions) == eqasc_test_total_chain_cnt

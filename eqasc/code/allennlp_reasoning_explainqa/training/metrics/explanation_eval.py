@@ -1,9 +1,11 @@
-from overrides import overrides
+import random
+from collections import Counter
+
 import numpy as np
 from allennlp.training.metrics.metric import Metric
+from overrides import overrides
+
 from allennlp_reasoning_explainqa.common.constants import *
-from collections import Counter
-import random
 
 
 def dcg_score(y_true, y_score, k=10, gains="exponential"):
@@ -57,8 +59,6 @@ def ndcg_score(y_true, y_score, k=10, gains="exponential"):
     return actual / best
 
 
-
-
 @Metric.register("explanation_eval")
 class ExplanationEval(Metric):
 
@@ -68,7 +68,7 @@ class ExplanationEval(Metric):
         self._id_count = 0
         self._pos_label = pos_label
         self._neg_label = neg_label
-        self._labels = [pos_label,neg_label]
+        self._labels = [pos_label, neg_label]
 
     @overrides
     def __call__(self, ques_id, choice_type, ground_truth_label, score):
@@ -82,27 +82,27 @@ class ExplanationEval(Metric):
         if choice_type in CORRECT_OPTION_TAG_LIST:
             assert ground_truth_label in self._labels, "Label not known"
             if ques_id not in self._predictions:
-                self._predictions[ ques_id ] = []
+                self._predictions[ques_id] = []
                 self._id_count += 1
-            self._predictions[ques_id].append({'score':score, 'ground_truth':ground_truth_label})
+            self._predictions[ques_id].append({'score': score, 'ground_truth': ground_truth_label})
             # self._gt[ques_id].append(ground_truth)
 
     @overrides
     def get_metric(self, reset: bool = False):
         if reset:
-            print("explain_eval: Counter(len(vals)) : ", Counter( [ len(val) for val in self._predictions.values() ] ))
-        ret = {"explainP1":[],"explainP1_normalized":[], "explainP2":[], "explainP5":[], "explainNDCG":[]}
-        total_label_counts = {'label_'+str(k):0 for k in self._labels}
-        for id,vals in self._predictions.items():
+            print("explain_eval: Counter(len(vals)) : ", Counter([len(val) for val in self._predictions.values()]))
+        ret = {"explainP1": [], "explainP1_normalized": [], "explainP2": [], "explainP5": [], "explainNDCG": []}
+        total_label_counts = {'label_' + str(k): 0 for k in self._labels}
+        for id, vals in self._predictions.items():
             # print(" ======= explain_eval : id = ", id)
-            random.shuffle(vals) #hack to avoid high scores in case of ties and correct ones got in first
-            vals = sorted(vals, key=lambda x:-x['score']) # sort by decreasing order of score
+            random.shuffle(vals)  # hack to avoid high scores in case of ties and correct ones got in first
+            vals = sorted(vals, key=lambda x: -x['score'])  # sort by decreasing order of score
             cnt_pos_flag = 0
             # cnt_pos = 0
             y_true = [val['ground_truth'] for val in vals]
             y_score = [val['score'] for val in vals]
             total_true = sum(y_true)
-            if total_true>0:
+            if total_true > 0:
                 # ndcg_exp = ndcg_score(y_true, y_score, k=10, gains="exponential")
                 ndcg = ndcg_score(y_true, y_score, k=10, gains="linear")
             else:
@@ -115,11 +115,11 @@ class ExplanationEval(Metric):
             ndcg_denominator = 0.0
             discount = 1.0
             discount_den = 1.0
-            for j,val in enumerate(vals): # to do what if num items is less than 5 ? -- will effect R@5
+            for j, val in enumerate(vals):  # to do what if num items is less than 5 ? -- will effect R@5
                 # print("explain_eval : j = ", j, " | val = ", val)
                 if val['ground_truth'] == self._pos_label:
-                    cnt_pos_flag = 1   # since just want to know ehteher it is there or not
-                    ndcg_numerator += (discount*1.0)
+                    cnt_pos_flag = 1  # since just want to know ehteher it is there or not
+                    ndcg_numerator += (discount * 1.0)
                     # denominator represents maximum possible. whenever encounter a positive, denominator value should increase
                     # since it is 0/1, it simple here. no need to sort.
                     # cnt_pos += 1
@@ -129,25 +129,25 @@ class ExplanationEval(Metric):
                     labelk = self._pos_label
                 else:
                     labelk = self._neg_label
-                total_label_counts['label_'+str(labelk)] += 1
+                total_label_counts['label_' + str(labelk)] += 1
                 if j == 0:
                     ret['explainP1'].append(cnt_pos_flag)
                 if j == 1:
-                    ret[ 'explainP2' ].append(cnt_pos_flag)
+                    ret['explainP2'].append(cnt_pos_flag)
                 if j == 4:
-                    ret[ 'explainP5' ].append(cnt_pos_flag)
+                    ret['explainP5'].append(cnt_pos_flag)
                 discount *= 0.5
-            if cnt_pos_flag>0:
+            if cnt_pos_flag > 0:
                 ret['explainP1_normalized'].append(ret['explainP1'][-1])
-            assert ndcg_numerator <= ndcg_denominator # sanity check
-            if ndcg_denominator <=0:
+            assert ndcg_numerator <= ndcg_denominator  # sanity check
+            if ndcg_denominator <= 0:
                 ndcg = 0.0
             else:
-                ndcg = ndcg_numerator/ndcg_denominator
-        self.ret = {k:{'items':len(lst),'score':np.mean(lst)} for k,lst in ret.items()}
+                ndcg = ndcg_numerator / ndcg_denominator
+        self.ret = {k: {'items': len(lst), 'score': np.mean(lst)} for k, lst in ret.items()}
         return_metric = {}
         for k, lst in ret.items():
-            return_metric[ k + '_items' ] = len(lst)
+            return_metric[k + '_items'] = len(lst)
             if len(lst) > 0:
                 return_metric[k] = np.mean(lst)
         return_metric.update(total_label_counts)
@@ -167,14 +167,13 @@ class ExplanationEval(Metric):
         return str(self.ret)  # f"CocovalsMeasures(em={self._total_em}, f1={self._total_f1})"
 
 
-
-
-
 import copy
+
+
 @Metric.register("precision_eval")
 class PrecisionEval(Metric):
 
-    def __init__(self, use_aggregate_scoring:bool = True) -> None:
+    def __init__(self, use_aggregate_scoring: bool = True) -> None:
         self._predictions = {}
         self._id_option_to_type = {}
         # self._gt = {}
@@ -186,22 +185,22 @@ class PrecisionEval(Metric):
     def __call__(self, ques_id, choice_type, ground_truth_label, score, option=None):
         assert choice_type in ALL_OPTION_TAG_LIST, "choice_type " + str(choice_type) + " not undertstood"
         if ques_id not in self._predictions:
-            self._predictions[ ques_id ] = []
+            self._predictions[ques_id] = []
             self._id_count += 1
-        self._predictions[ques_id].append({'score':score, 'choice_type':choice_type, 'option':option})
+        self._predictions[ques_id].append({'score': score, 'choice_type': choice_type, 'option': option})
         # self._gt[ques_id].append(ground_truth)
 
     def _get_aggregate_score(self, sorted_lst, max_k=5):
         discount = 1.0
         ret = 0.0
         den = 0.0
-        for k,val in enumerate(sorted_lst):
-            if k>=max_k:
+        for k, val in enumerate(sorted_lst):
+            if k >= max_k:
                 break
-            ret += (val['score']*discount)
+            ret += (val['score'] * discount)
             den += discount
             discount *= 0.5
-        return ret/den
+        return ret / den
 
     def _group_by_choice(self):
         ret = {}
@@ -217,39 +216,39 @@ class PrecisionEval(Metric):
                 tmp[option].append(val)
             # ret[k] = copy.deepcopy( vals[0] )
             for option in tmp:
-                tmp[ option ] = sorted(tmp[option], key=lambda x:-x['score'])
-                ret[k].append( copy.deepcopy(tmp[option][0]) )
+                tmp[option] = sorted(tmp[option], key=lambda x: -x['score'])
+                ret[k].append(copy.deepcopy(tmp[option][0]))
                 if self._use_aggregate_scoring:
-                    ret[k][-1].update( {'score':self._get_aggreagte_score(tmp[option])})
-        print( 'chains_per_id', Counter(chains_per_id.values()) )
+                    ret[k][-1].update({'score': self._get_aggreagte_score(tmp[option])})
+        print('chains_per_id', Counter(chains_per_id.values()))
         return ret
 
     @overrides
-    def get_metric(self, reset: bool = False, eval_with_aggregation:bool = False):
-        ret = {"QA_R1":[], "QA_R2":[], "QA_R5":[]}
+    def get_metric(self, reset: bool = False, eval_with_aggregation: bool = False):
+        ret = {"QA_R1": [], "QA_R2": [], "QA_R5": []}
         predictions_to_use = self._predictions
         if eval_with_aggregation:
             predictions_to_use = self._group_by_choice()
-        for id,vals in predictions_to_use.items():
+        for id, vals in predictions_to_use.items():
             # keep a track
-            vals = sorted(vals, key=lambda x:-x['score']) # sort by decreasing order of score
+            vals = sorted(vals, key=lambda x: -x['score'])  # sort by decreasing order of score
             cnt_pos = 0
-            for j,val in enumerate(vals): # to do what if num items is less than 5 ? -- will effect R@5
+            for j, val in enumerate(vals):  # to do what if num items is less than 5 ? -- will effect R@5
                 if val['choice_type'] in CORRECT_OPTION_TAG_LIST:
-                    cnt_pos = 1   # since just want to know ehteher it is there or not
+                    cnt_pos = 1  # since just want to know ehteher it is there or not
                 if j == 0:
                     ret['QA_R1'].append(cnt_pos)
                 elif j == 1:
-                    ret[ 'QA_R2' ].append(cnt_pos)
+                    ret['QA_R2'].append(cnt_pos)
                 elif j == 4:
-                    ret[ 'QA_R5' ].append(cnt_pos)
+                    ret['QA_R5'].append(cnt_pos)
             # if cnt_pos is not 0, then print/add to list
-        self.ret = {k: {'items': len(lst), 'score': np.mean(lst) } for k, lst in ret.items() }
+        self.ret = {k: {'items': len(lst), 'score': np.mean(lst)} for k, lst in ret.items()}
         return_metric = {}
         for k, lst in ret.items():
-            return_metric[ k + '_items' ] = len(lst)
+            return_metric[k + '_items'] = len(lst)
             if len(lst) > 0:
-                return_metric[ k ] = np.mean(lst)
+                return_metric[k] = np.mean(lst)
         # print(" === return_metric = ", return_metric)
         if reset:
             self.reset()
@@ -265,16 +264,15 @@ class PrecisionEval(Metric):
         return str(self.ret)  # f"CocovalsMeasures(em={self._total_em}, f1={self._total_f1})"
 
 
-
 if __name__ == '__main__':
     explain_eval = ExplanationEval()
 
     dummy1 = [
         [1, 1, 1.5],
         [1, 1, 1.0],
-        [1, 0, 0.9] # perfect ranking
+        [1, 0, 0.9]  # perfect ranking
     ]
-    for ques_id,ground_truth_label,score in dummy1:
+    for ques_id, ground_truth_label, score in dummy1:
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
     print("============")
@@ -285,12 +283,12 @@ if __name__ == '__main__':
     dummy1 = [
         [1, 1, 1.5],
         [1, 1, 1.0],
-        [1, 0, 0.9], # perfect ranking
+        [1, 0, 0.9],  # perfect ranking
         [2, 0, 1.5],
         [2, 0, 1.0],
         [2, 1, 0.9]  # completely opposite ranking
     ]
-    for ques_id,ground_truth_label,score in dummy1:
+    for ques_id, ground_truth_label, score in dummy1:
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
     print("============")
@@ -314,7 +312,6 @@ if __name__ == '__main__':
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
     print("============")
-
 
     dummy1 = [
         [1, 0, 1.0],
