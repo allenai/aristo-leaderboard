@@ -27,7 +27,8 @@ The predictions file should hold multiple JSON objects, with each object having 
 The chain IDs must match those in the labels. (See below.)
 
 The file `predictions/grc.test.predict` in this repo contains an example
-prediction for the test labels. It was made by doing ... TODO
+prediction for the test labels. It was made with the script
+[grc.sh](https://github.com/harsh19/Reasoning-Chains-MultihopQA/blob/evaluator/code/scripts/grc.sh#L43)
 
 ### Labels file
 
