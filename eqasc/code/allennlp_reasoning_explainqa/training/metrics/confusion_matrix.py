@@ -6,7 +6,7 @@ from sklearn.metrics import roc_curve
 
 
 @Metric.register("f1custom_retrievaleval")
-class F1MeasureCustomRetrievalEval():
+class F1MeasureCustomRetrievalEval:
 
     def __init__(self, pos_label=1, save_fig=False) -> None:
         self._predictions = []
