@@ -4,7 +4,7 @@ This directory has code and data for the eQASC evaluator, as described in the EM
 
 * [code](code/) holds the evaluator
 * [data/](data/) holds the ... TODO
-* [evaluator_data/eqasc](evaluator_data/eqasc/) holds the labels used by the evaluator
+* [data/](data/) holds the labels used by the evaluator
 
 ### Reference
 

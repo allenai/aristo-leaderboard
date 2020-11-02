@@ -35,14 +35,14 @@ The labels file holds a single JSON object with keys being chain IDs and values
 being labels. It looks like this:
 
 ```
-% cat ../evaluator_data/eqasc/chainid_to_label_test.json
+% cat ../data/chainid_to_label_test.json
  {"3GM6G9ZBKNWCBXAS7DE3CDBF13STML_1_7": 0, 
  "3GM6G9ZBKNWCBXAS7DE3CDBF13STML_1_8": 0, 
  "3GM6G9ZBKNWCBXAS7DE3CDBF13STML_1_6": 1, 
 ...
 ```
 
-The file `../evaluator_data/eqasc/chainid_to_label_test.json` in this repo
+The file `../data/chainid_to_label_test.json` in this repo
 contains the labels for test chains.
 
 ### Output metrics
@@ -82,7 +82,7 @@ docker run \
   -e PYTHONPATH=. \
   -e PYTHONUNBUFFERED=yes \
   -v $PWD/predictions:/predictions:ro \
-  -v $PWD/../evaluator_data/eqasc:/labels:ro \
+  -v $PWD/../data:/labels:ro \
   -v /tmp:/output:rw \
   --entrypoint python \
   eqasc-evaluator \
@@ -93,7 +93,7 @@ docker run \
 ```
 
 This evaluates the file `predictions/grc.test.predict` against the labels in
-`../evaluator_data/eqasc/chainid_to_label_test.json`, and writes the file
+`../data/chainid_to_label_test.json`, and writes the file
 `/tmp/metrics.json` locally:
 
 ```
@@ -110,11 +110,11 @@ You'll have to install dependencies with Conda, following the environment.yml fi
 After you've done that, run the evaluator like this:
 
 ```bash
-% env PYTHONPATH=. python allennlp_reasoning_explainqa/evaluator/evaluator.py predictions/grc.test.predict ../evaluator_data/eqasc/labels/chainid_to_label_test.json /tmp/metrics.json
+% env PYTHONPATH=. python allennlp_reasoning_explainqa/evaluator/evaluator.py predictions/grc.test.predict ../data/labels/chainid_to_label_test.json /tmp/metrics.json
 ```
 
 This evaluates the file `predictions/grc.test.predict` against the labels in
-`../evaluator_data/eqasc/chainid_to_label_test.json`, and writes the file
+`../data/chainid_to_label_test.json`, and writes the file
 `/tmp/metrics.json` locally:
 
 ```

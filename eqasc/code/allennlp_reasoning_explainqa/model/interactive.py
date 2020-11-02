@@ -93,7 +93,3 @@ class NewPredictor(Predictor):
             print("========= grc_form: ", grc_form)
             chain[0], chain[1], chain[2] = grc_form[0], grc_form[1], grc_form[2]
         return self._dataset_reader.text_to_instance([chain],[1]) # here 1 is just a dummy label
-
-
-# MODEL_NAME=grc
-# CUDA_VISIBLE_DEVICES=0 python -m allennlp.run predict --output-file predictions/"$MODEL_NAME".interactive --weights-file tmp/"$MODEL_NAME"/best.th --include-package allennlp_reasoning_explainqa  --overrides '{ }' --cuda-device 0 tmp/"$MODEL_NAME"/model.tar.gz ../data/eqasc_perturbed/turk_modified_test.tsv --predictor interactive
