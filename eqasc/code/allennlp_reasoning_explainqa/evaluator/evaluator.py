@@ -1,3 +1,4 @@
+import json
 import sys
 
 from allennlp_reasoning_explainqa.evaluator.constants import *
