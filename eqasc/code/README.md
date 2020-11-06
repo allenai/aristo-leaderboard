@@ -52,9 +52,9 @@ A "metrics" file will be written that contains evaluation scores.
 
 This file holds a single JSON structure with three key-value pairs. The keys are:
 
-* `auc_roc` -- This is .. TODO
-* `explainP1` -- This is .. TODO
-* `explainNDCG` - This is ... TODO
+* `auc_roc` -- This is Area under the ROC curve which measures classification problem at various thresholds settings. The ROC curve is plotted with TPR against the FPR where TPR is on y-axis and FPR is on the x-axis. Value is always between 0 and 1 (with 1 representing the best performance).
+* `explainP1` -- This is precision@1 metric, which measures the fraction of cases where the highest scoring candidate chain is a valid reasoning explanation. Value is always between 0 and 1 (with 1 representing the best performance).
+* `explainNDCG` - This is Normalized Discounted Cumulative Gain (https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG) to emasure the ranking performance. Value is between 0 and 1 (with 1 representing the best performance), with highest score 1 when all the valid ranking chains are ranked better than all the invalid reasoning chains.
 
 Example:
 
