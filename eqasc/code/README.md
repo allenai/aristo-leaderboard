@@ -65,10 +65,10 @@ Example:
 
 ## Running in Docker
 
-The eQASC evaluator has many dependencies, like AllenNLP, so if you only want
-to run the evaluator on a prediction file, this is the easiest way to do so,
-without setting up a local development environment (Conda) with those
-dependencies installed.
+The eQASC evaluator has many dependencies, so if you only want to run the
+evaluator on a prediction file, this is the easiest way to do so, without
+setting up a local development environment (Conda) with those dependencies
+installed.
 
 First, build an image with the evaluator:
 

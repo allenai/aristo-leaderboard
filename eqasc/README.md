@@ -1,11 +1,35 @@
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/learning-to-explain-datasets-and-models-for/reasoning-chain-explanations-on-eqasc)](https://paperswithcode.com/sota/reasoning-chain-explanations-on-eqasc?p=learning-to-explain-datasets-and-models-for)
+# eQASC
 
 This directory has code and data for the eQASC evaluator, as described in the EMNLP 2020 paper [Learning to Explain: Datasets and Models for Identifying Valid Reasoning Chains in Multihop Question-Answering](https://www.semanticscholar.org/paper/Learning-to-Explain%3A-Datasets-and-Models-for-Valid-Jhamtani-Clark/ebaebfefec9d5c21a4559a1a038743bd437d2f01).
 
 * [code](code/) holds the evaluator
 * [data/](data/) holds the labels used by the evaluator
 
-### Reference
+## Example usage
+
+To evaluate your prediction file (located at /tmp/predictions.txt) against the
+test dataset, run this and look at the scores in the file /tmp/metrics.json:
+
+```
+cd code
+docker build -t eqasc-evaluator .
+docker run \
+  -e PYTHONPATH=. \
+  -e PYTHONUNBUFFERED=yes \
+  -v /tmp/predictions.txt:/predictions.txt:ro \
+  -v $PWD/../data:/labels:ro \
+  -v /tmp:/output:rw \
+  --entrypoint python \
+  eqasc-evaluator \
+  allennlp_reasoning_explainqa/evaluator/evaluator.py \
+  /predictions.txt \
+  /labels/chainid_to_label_test.json \
+  /output/metrics.json
+```
+
+You'll find more details about the evaluator in the [code](code/) directory.
+
+## Reference
 
 Please cite the work like this:
 
