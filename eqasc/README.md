@@ -2,7 +2,7 @@
 
 This directory has code and data for the eQASC evaluator, as described in the EMNLP 2020 paper [Learning to Explain: Datasets and Models for Identifying Valid Reasoning Chains in Multihop Question-Answering](https://www.semanticscholar.org/paper/Learning-to-Explain%3A-Datasets-and-Models-for-Valid-Jhamtani-Clark/ebaebfefec9d5c21a4559a1a038743bd437d2f01).
 
-* [code](code/) holds the evaluator
+* [code/](code/) holds the evaluator
 * [data/](data/) holds the labels used by the evaluator
 
 ## Example usage
@@ -27,7 +27,7 @@ docker run \
   /output/metrics.json
 ```
 
-You'll find more details about the evaluator in the [code](code/) directory.
+You'll find more details about the evaluator in the [code/](code/) directory.
 
 ## Reference
 
