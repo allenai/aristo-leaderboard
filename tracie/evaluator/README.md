@@ -39,3 +39,31 @@ For the above example, the `metrics.json` file looks like this:
 ```js
 {"total_acc": 0.5012809564474808, "start_acc": 0.500945179584121, "end_acc": 0.5015576323987538, "story_em": 0.0}
 ```
+
+## Running in Docker
+
+First, build an image with the evaluator:
+
+```
+docker build -t tracie-evaluator .
+```
+
+Then run it with the above files like this:
+
+```
+docker run \
+  -v $PWD/../data:/data:ro \
+  -v /tmp:/output:rw \
+  tracie-evaluator \
+  python /evaluator.py \
+  --question_answers /data/train.jsonl \
+  --predictions /data/train-dummy-predictions.txt \
+  --output /output/metrics.json
+```
+
+This will write the file `/tmp/metrics.json` locally:
+
+```
+% cat /metrics.json
+{"total_acc": 0.5012809564474808, "start_acc": 0.500945179584121, "end_acc": 0.5015576323987538, "story_em": 0.0}
+```
