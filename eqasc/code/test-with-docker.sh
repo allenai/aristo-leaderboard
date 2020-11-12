@@ -21,8 +21,6 @@ tempdir=$(mktemp -d /tmp/temp.XXXX)
 
 set -x
 docker run \
-  -e PYTHONPATH=. \
-  -e PYTHONUNBUFFERED=yes \
   -v $PWD/predictions:/predictions:ro \
   -v $PWD/../data:/labels:ro \
   -v $tempdir:/output:rw \

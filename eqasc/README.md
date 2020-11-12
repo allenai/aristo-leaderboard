@@ -14,8 +14,6 @@ test dataset, run this and look at the scores in the file /tmp/metrics.json:
 cd code
 docker build -t eqasc-evaluator .
 docker run \
-  -e PYTHONPATH=. \
-  -e PYTHONUNBUFFERED=yes \
   -v /tmp/predictions.txt:/predictions.txt:ro \
   -v $PWD/../data:/labels:ro \
   -v /tmp:/output:rw \
