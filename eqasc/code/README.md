@@ -80,8 +80,6 @@ Then run it with the above files like this:
 
 ```
 docker run \
-  -e PYTHONPATH=. \
-  -e PYTHONUNBUFFERED=yes \
   -v $PWD/predictions:/predictions:ro \
   -v $PWD/../data:/labels:ro \
   -v /tmp:/output:rw \
