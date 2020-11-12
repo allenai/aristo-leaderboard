@@ -54,7 +54,7 @@ This file holds a single JSON structure with three key-value pairs. The keys are
 
 * `auc_roc` -- This is Area under the ROC curve which measures classification problem at various thresholds settings. The ROC curve is plotted with TPR against the FPR where TPR is on y-axis and FPR is on the x-axis. Value is always between 0 and 1 (with 1 representing the best performance).
 * `explainP1` -- This is precision@1 metric, which measures the fraction of cases where the highest scoring candidate chain is a valid reasoning explanation. Value is always between 0 and 1 (with 1 representing the best performance).
-* `explainNDCG` - This is Normalized Discounted Cumulative Gain (https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG) to emasure the ranking performance. Value is between 0 and 1 (with 1 representing the best performance), with highest score 1 when all the valid ranking chains are ranked better than all the invalid reasoning chains.
+* `explainNDCG` - This is Normalized Discounted Cumulative Gain (https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG) to measure the ranking performance. Value is between 0 and 1 (with 1 representing the best performance), with highest score 1 when all the valid ranking chains are ranked better than all the invalid reasoning chains.
 
 Example:
 
@@ -99,7 +99,7 @@ This evaluates the file `predictions/grc.test.predict` against the labels in
 
 ```
 % cat /tmp/metrics.json
-{"auc_roc": 0.8457533894216488, "explainP1": 0.5387978142076503, "explainNDCG": 0.6376201537170901}%   
+{"auc_roc": 0.8457533894216488, "explainP1": 0.5387978142076503, "explainNDCG": 0.6376201537170901}
 ```
 
 See below for an explanation of the three arguments to the `evaluator.py` script.
