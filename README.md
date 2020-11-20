@@ -5,5 +5,4 @@ This repository contains tools for generating datasets and evaluating prediction
 * [ProPara](propara/)
 * [QASC](qasc/)
 * [SciTail](scitail/)
-* [TRACIE](tracie/)
 * [eQASC](eqasc/)
