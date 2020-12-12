@@ -30,7 +30,6 @@ class F1MeasureCustomRetrievalEval:
     def get_metric(self, reset: bool = False,
                    given_thresh=None):  # -> Dict[str,Float]:
         probs = np.array(self._probs)
-        probs = (probs - probs.min()) / (probs.max() - probs.min())
         gt = np.array(self._gt)
 
         threshold_max = None
