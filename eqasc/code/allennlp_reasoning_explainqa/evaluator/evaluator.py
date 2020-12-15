@@ -4,14 +4,17 @@ import sys
 from allennlp_reasoning_explainqa.training.metrics.confusion_matrix import *
 from allennlp_reasoning_explainqa.training.metrics.explanation_eval import *
 
-eqasc_test_total_chain_cnt = 9141
-
-
 def evaluate(prediction_filename, label_filename):
-    predictions = open(prediction_filename, 'r').readlines()
-    assert len(predictions) == eqasc_test_total_chain_cnt
-    predictions = [json.loads(row) for row in predictions]
     chainid_to_label = json.load(open(label_filename, 'r'))
+    chain_count = len(chainid_to_label)
+
+    predictions_lines = open(prediction_filename, 'r').readlines()
+    predictions = [json.loads(row) for row in predictions_lines]
+    prediction_count = len(predictions)
+    if chain_count != prediction_count:
+        print(f"Label file {label_filename} has {chain_count} chains, but prediction file {prediction_filename} has {prediction_count} predictions. These must be equal.")
+        sys.exit(1)
+
     f1eval = F1MeasureCustomRetrievalEval(pos_label=1)
     explanation_eval = ExplanationEval()
     chain_ids_covered = []
