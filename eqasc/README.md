@@ -7,23 +7,29 @@ This directory has code and data for the eQASC evaluator, as described in the EM
 
 ## Example usage
 
-To evaluate your prediction file (located at /tmp/predictions.txt) against the
+To evaluate your prediction file (located at /tmp/my_predictions_test.jsonl) against the
 test dataset, run this and look at the scores in the file /tmp/metrics.json:
 
 ```
 cd code
 docker build -t eqasc-evaluator .
 docker run \
-  -v /tmp/predictions.txt:/predictions.txt:ro \
-  -v $PWD/../data:/labels:ro \
+  -e PYTHONPATH=. \
+  -e PYTHONUNBUFFERED=yes \
+  -v /tmp/my_predictions_test.jsonl:/predictions.jsonl:ro \
+  -v $PWD/../data/chainid_to_label_test.json:/labels.json:ro \
   -v /tmp:/output:rw \
   --entrypoint python \
   eqasc-evaluator \
   allennlp_reasoning_explainqa/evaluator/evaluator.py \
-  /predictions.txt \
-  /labels/chainid_to_label_test.json \
+  /predictions.jsonl \
+  /labels.json \
   /output/metrics.json
 ```
+
+To confirm that the evaluator is working on correct inputs, you can use [dummy
+prediction files](data/). To to do, replace `/tmp/my_predictions_test.jsonl` above
+with `$PWD/../data/dummy_predictions_test.jsonl`.
 
 You'll find more details about the evaluator in the [code/](code/) directory.
 
