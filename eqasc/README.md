@@ -7,7 +7,7 @@ This directory has code and data for the eQASC evaluator, as described in the EM
 
 ## Example usage
 
-To evaluate your prediction file (located in this repo in data/dummy_predictions_dev.jsonl) against the
+To evaluate your prediction file (located at /tmp/my_predictions_test.jsonl) against the
 test dataset, run this and look at the scores in the file /tmp/metrics.json:
 
 ```
@@ -16,8 +16,8 @@ docker build -t eqasc-evaluator .
 docker run \
   -e PYTHONPATH=. \
   -e PYTHONUNBUFFERED=yes \
-  -v $PWD/../data/dummy_predictions_dev.jsonl:/predictions.jsonl:ro \
-  -v $PWD/../data/chainid_to_label_dev.json:/labels.json:ro \
+  -v /tmp/my_predictions_test.jsonl:/predictions.jsonl:ro \
+  -v $PWD/../data/chainid_to_label_test.json:/labels.json:ro \
   -v /tmp:/output:rw \
   --entrypoint python \
   eqasc-evaluator \
@@ -27,9 +27,9 @@ docker run \
   /output/metrics.json
 ```
 
-You can change `_dev` to `_test` to see an evaluation of dummy predictions on
-the test set. See details about these dummy predictions in the [data/](data/)
-directory.
+To confirm that the evaluator is working on correct inputs, you can use [dummy
+prediction files](data/). To to do, replace `/tmp/my_predictions_test.jsonl` above
+with `$PWD/../data/dummy_predictions_test.jsonl`.
 
 You'll find more details about the evaluator in the [code/](code/) directory.
 
