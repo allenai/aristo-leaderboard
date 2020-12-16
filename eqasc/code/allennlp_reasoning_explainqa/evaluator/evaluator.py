@@ -4,6 +4,12 @@ import sys
 from allennlp_reasoning_explainqa.training.metrics.confusion_matrix import *
 from allennlp_reasoning_explainqa.training.metrics.explanation_eval import *
 
+import random
+
+# Sets random seed to a nothing-up-my-sleeve number so that we have
+# deterministic evaluation scores.
+random.seed(12345)
+
 def evaluate(prediction_filename, label_filename):
     chainid_to_label = json.load(open(label_filename, 'r'))
     chain_count = len(chainid_to_label)
