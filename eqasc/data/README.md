@@ -21,5 +21,5 @@ You can use these as inputs to the predictor, to confirm that the evaluator is w
 
 The scores you should expect from these dummy predictions are:
 
-* dev: {"auc_roc": 0.5, "explainP1": 0.21653971708378672, "explainNDCG": 0.476369331557765}
-* test: {"auc_roc": 0.5, "explainP1": 0.23497267759562843, "explainNDCG": 0.4873611217679728}
+* dev: `{"auc_roc": 0.5, "explainP1": 0.23612622415669204, "explainNDCG": 0.4791226010631029}`
+* test: `{"auc_roc": 0.5, "explainP1": 0.2174863387978142, "explainNDCG": 0.48617247810718606}`
