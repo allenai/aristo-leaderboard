@@ -1,10 +1,14 @@
 import json
+import random
 import sys
 
-from allennlp_reasoning_explainqa.training.metrics.confusion_matrix import *
-from allennlp_reasoning_explainqa.training.metrics.explanation_eval import *
+from allennlp_reasoning_explainqa.common.constants import CORRECT_OPTION_TAG
+from allennlp_reasoning_explainqa.training.metrics.confusion_matrix import F1MeasureCustomRetrievalEval
+from allennlp_reasoning_explainqa.training.metrics.explanation_eval import ExplanationEval
 
-import random
+# Sets random seed to a nothing-up-my-sleeve number so that we have
+# deterministic evaluation scores.
+random.seed(12345)
 
 # Sets random seed to a nothing-up-my-sleeve number so that we have
 # deterministic evaluation scores.
