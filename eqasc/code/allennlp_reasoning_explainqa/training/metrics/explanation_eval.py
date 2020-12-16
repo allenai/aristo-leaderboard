@@ -58,7 +58,6 @@ def ndcg_score(y_true, y_score, k=10, gains="exponential"):
 
 
 class ExplanationEval:
-
     def __init__(self, pos_label=1, neg_label=0) -> None:
         self._predictions = {}
         self._id_count = 0
@@ -78,57 +77,78 @@ class ExplanationEval:
             if ques_id not in self._predictions:
                 self._predictions[ques_id] = []
                 self._id_count += 1
-            self._predictions[ques_id].append({'score': score, 'ground_truth': ground_truth_label})
+            self._predictions[ques_id].append(
+                {"score": score, "ground_truth": ground_truth_label}
+            )
 
     def get_metric(self, reset: bool = False):
         if reset:
-            print("explain_eval: Counter(len(vals)) : ", Counter([len(val) for val in self._predictions.values()]))
-        ret = {"explainP1": [], "explainP1_normalized": [], "explainP2": [], "explainP5": [], "explainNDCG": []}
-        total_label_counts = {'label_' + str(k): 0 for k in self._labels}
+            print(
+                "explain_eval: Counter(len(vals)) : ",
+                Counter([len(val) for val in self._predictions.values()]),
+            )
+        ret = {
+            "explainP1": [],
+            "explainP1_normalized": [],
+            "explainP2": [],
+            "explainP5": [],
+            "explainNDCG": [],
+        }
+        total_label_counts = {"label_" + str(k): 0 for k in self._labels}
         for id, vals in self._predictions.items():
-            random.shuffle(vals)  # hack to avoid high scores in case of ties and correct ones got in first
-            vals = sorted(vals, key=lambda x: -x['score'])  # sort by decreasing order of score
+            random.shuffle(
+                vals
+            )  # hack to avoid high scores in case of ties and correct ones got in first
+            vals = sorted(
+                vals, key=lambda x: -x["score"]
+            )  # sort by decreasing order of score
             cnt_pos_flag = 0
-            y_true = [val['ground_truth'] for val in vals]
-            y_score = [val['score'] for val in vals]
+            y_true = [val["ground_truth"] for val in vals]
+            y_score = [val["score"] for val in vals]
             total_true = sum(y_true)
             if total_true > 0:
                 ndcg = ndcg_score(y_true, y_score, k=10, gains="linear")
             else:
                 ndcg = 0
-            ret['explainNDCG'].append(ndcg)
+            ret["explainNDCG"].append(ndcg)
 
             ndcg_numerator = 0.0
             ndcg_denominator = 0.0
             discount = 1.0
             discount_den = 1.0
-            for j, val in enumerate(vals):  # to do what if num items is less than 5 ? -- will effect R@5
-                if val['ground_truth'] == self._pos_label:
-                    cnt_pos_flag = 1  # since just want to know ehteher it is there or not
-                    ndcg_numerator += (discount * 1.0)
+            for j, val in enumerate(
+                vals
+            ):  # to do what if num items is less than 5 ? -- will effect R@5
+                if val["ground_truth"] == self._pos_label:
+                    cnt_pos_flag = (
+                        1  # since just want to know ehteher it is there or not
+                    )
+                    ndcg_numerator += discount * 1.0
                     # denominator represents maximum possible. whenever encounter a positive, denominator value should increase
                     # since it is 0/1, it simple here. no need to sort.
                     # cnt_pos += 1
-                    ndcg_denominator += (discount_den * 1.0)
+                    ndcg_denominator += discount_den * 1.0
                     discount_den *= 0.5
                     labelk = self._pos_label
                 else:
                     labelk = self._neg_label
-                total_label_counts['label_' + str(labelk)] += 1
+                total_label_counts["label_" + str(labelk)] += 1
                 if j == 0:
-                    ret['explainP1'].append(cnt_pos_flag)
+                    ret["explainP1"].append(cnt_pos_flag)
                 if j == 1:
-                    ret['explainP2'].append(cnt_pos_flag)
+                    ret["explainP2"].append(cnt_pos_flag)
                 if j == 4:
-                    ret['explainP5'].append(cnt_pos_flag)
+                    ret["explainP5"].append(cnt_pos_flag)
                 discount *= 0.5
             if cnt_pos_flag > 0:
-                ret['explainP1_normalized'].append(ret['explainP1'][-1])
+                ret["explainP1_normalized"].append(ret["explainP1"][-1])
             assert ndcg_numerator <= ndcg_denominator  # sanity check
-        self.ret = {k: {'items': len(lst), 'score': np.mean(lst)} for k, lst in ret.items()}
+        self.ret = {
+            k: {"items": len(lst), "score": np.mean(lst)} for k, lst in ret.items()
+        }
         return_metric = {}
         for k, lst in ret.items():
-            return_metric[k + '_items'] = len(lst)
+            return_metric[k + "_items"] = len(lst)
             if len(lst) > 0:
                 return_metric[k] = np.mean(lst)
         return_metric.update(total_label_counts)
@@ -146,14 +166,10 @@ class ExplanationEval:
         return str(self.ret)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     explain_eval = ExplanationEval()
 
-    dummy1 = [
-        [1, 1, 1.5],
-        [1, 1, 1.0],
-        [1, 0, 0.9]  # perfect ranking
-    ]
+    dummy1 = [[1, 1, 1.5], [1, 1, 1.0], [1, 0, 0.9]]  # perfect ranking
     for ques_id, ground_truth_label, score in dummy1:
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
@@ -168,68 +184,44 @@ if __name__ == '__main__':
         [1, 0, 0.9],  # perfect ranking
         [2, 0, 1.5],
         [2, 0, 1.0],
-        [2, 1, 0.9]  # completely opposite ranking
+        [2, 1, 0.9],  # completely opposite ranking
     ]
     for ques_id, ground_truth_label, score in dummy1:
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
     print("============")
 
-    dummy1 = [
-        [1, 0, 1.0],
-        [1, 1, 1.0],
-        [1, 1, 1.0]
-    ]
+    dummy1 = [[1, 0, 1.0], [1, 1, 1.0], [1, 1, 1.0]]
     for ques_id, ground_truth_label, score in dummy1:
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
     print("============")
 
-    dummy1 = [
-        [1, 1, 1.0],
-        [1, 1, 1.0],
-        [1, 0, 1.0]
-    ]
+    dummy1 = [[1, 1, 1.0], [1, 1, 1.0], [1, 0, 1.0]]
     for ques_id, ground_truth_label, score in dummy1:
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
     print("============")
 
-    dummy1 = [
-        [1, 0, 1.0],
-        [1, 1, 1.01],
-        [1, 1, 1.01]
-    ]
+    dummy1 = [[1, 0, 1.0], [1, 1, 1.01], [1, 1, 1.01]]
     for ques_id, ground_truth_label, score in dummy1:
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
     print("============")
 
-    dummy1 = [
-        [1, 0, 1.02],
-        [1, 1, 1.01],
-        [1, 1, 1.01]
-    ]
+    dummy1 = [[1, 0, 1.02], [1, 1, 1.01], [1, 1, 1.01]]
     for ques_id, ground_truth_label, score in dummy1:
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
     print("============")
 
-    dummy1 = [
-        [1, 0, 1.0],
-        [1, 0, 1.0],
-        [1, 1, 1.0]
-    ]
+    dummy1 = [[1, 0, 1.0], [1, 0, 1.0], [1, 1, 1.0]]
     for ques_id, ground_truth_label, score in dummy1:
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
     print("============")
 
-    dummy1 = [
-        [1, 0, 1.0],
-        [1, 0, 1.0],
-        [1, 0, 1.0]
-    ]
+    dummy1 = [[1, 0, 1.0], [1, 0, 1.0], [1, 0, 1.0]]
     for ques_id, ground_truth_label, score in dummy1:
         explain_eval(ques_id, CORRECT_OPTION_TAG, ground_truth_label, score)
     print(explain_eval.get_metric(reset=True))
