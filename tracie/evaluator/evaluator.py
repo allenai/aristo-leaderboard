@@ -68,15 +68,26 @@ def main():
         '--output', '-o',
         help='Output results to this file.',
         required=True)
+    parser.add_argument(
+        '--train_type', '-train_type',
+        help='The particular training data used.',
+        required=True)
 
     ## load cli arguments 
     args = parser.parse_args()
+
+    valid_train_sets = set(["train_iid","train_uniform"])
+    if args.train_type not in valid_train_sets:
+        raise ValueError(
+            'Training type must be from: %s' % ','.join(list(valid_train_sets))
+        )
 
     total_acc,start_acc,end_acc,story_em = evaluate(args.question_answers,args.predictions)
     
     with open(args.output,"wt",encoding="UTF-8") as output:
         output.write(json.dumps(
             {
+                "train_type": args.train_type,
                 "total_acc": total_acc,
                 "start_acc": start_acc,
                 "end_acc"  : end_acc,
