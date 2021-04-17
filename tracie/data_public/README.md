@@ -1,4 +1,4 @@
-This directory contains the files `train_iid.jsonl`, `train_uniform.json`, and `test.jsonl` (the different training sets refer to different splits based on a strict `iid` split and more balanced `uniform` split).
+This directory contains the files `train_iid.jsonl`, `train_uniform.jsonl` (two versions of the training data that can be used), and `test.jsonl` (the different training sets refer to different splits based on a strict `iid` split and more balanced `uniform` split).
 
 Each example in the file looks like the following:
 ```
