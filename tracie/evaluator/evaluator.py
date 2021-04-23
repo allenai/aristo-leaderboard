@@ -26,7 +26,6 @@ def evaluate(gold_file, prediction_file):
         else:
             story_prediction_map[story].append(False)
 
-        ### 
         if "starts before" in hypothesis or "starts after" in hypothesis:
             total_start += 1
             if label == prediction:
@@ -97,5 +96,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#print(evaluate("iid/test.jsonl", "sample_prediction_iid.txt"))
