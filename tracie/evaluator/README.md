@@ -5,7 +5,7 @@ This script evaluates NLI predictions against correct inferences and produces 4 
 ## Example
 
 ```sh
-% python3 evaluator/evaluator.py --question_answers data_public/train_iid.jsonl --predictions data_public/train_iid_predictions.txt  --output metrics.json --train_type train_iid
+% python3 evaluator/evaluator.py --question_answers data/train_iid.jsonl --predictions data/train_iid_predictions.txt  --output metrics.json --train_type train_iid
 
 % cat metrics.json
 {"train_type": "train_iid", "total_acc": 0.5, "start_acc": 0.5, "end_acc": 0.5, "story_em": 0.0}
