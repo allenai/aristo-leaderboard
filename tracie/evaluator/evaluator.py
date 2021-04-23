@@ -72,7 +72,6 @@ def main():
         help='The particular training data used.',
         required=True)
 
-    ## load cli arguments 
     args = parser.parse_args()
 
     valid_train_sets = set(["train_iid","train_uniform"])
