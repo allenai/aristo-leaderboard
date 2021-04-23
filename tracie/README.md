@@ -5,8 +5,10 @@
 
 ## Example usage
 
-To evaluate your predictions, run the following (on a toy prediction file that guesses `entailment` for every train instance, called `train_predictions.txt`). 
-```
+To evaluate your predictions, run the following (on a toy prediction file that
+guesses `entailment` for every train instance, called `train_predictions.txt`). 
+
+```sh
 % python3 evaluator/evaluator.py --question_answers data_public/train_iid.jsonl --predictions data_public/train_iid_predictions.txt  --output metrics.json --train_type train_iid
 
 % cat metrics.json
