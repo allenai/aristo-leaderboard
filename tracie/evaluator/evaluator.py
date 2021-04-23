@@ -1,9 +1,10 @@
 import json
 
+
 def evaluate(gold_file, prediction_file):
     glines = [x.strip() for x in open(gold_file).readlines()]
     plines = [x.strip() for x in open(prediction_file).readlines()]
-    assert len(glines) == len(plines),"Issue with evaluation file!"
+    assert len(glines) == len(plines), "Issue with evaluation file!"
     total = 0
     correct = 0
     total_start = 0
@@ -13,9 +14,9 @@ def evaluate(gold_file, prediction_file):
     story_prediction_map = {}
     for i, l in enumerate(glines):
         obj = json.loads(glines[i])
-        hypothesis = obj['sentence1'] if "sentence1" in obj else obj["query"]
-        story = obj['sentence2'] if "sentence2" in obj else obj["story"]
-        label = obj['gold_label']
+        hypothesis = obj["sentence1"] if "sentence1" in obj else obj["query"]
+        story = obj["sentence2"] if "sentence2" in obj else obj["story"]
+        label = obj["gold_label"]
         if story not in story_prediction_map:
             story_prediction_map[story] = []
         prediction = plines[i]
@@ -53,45 +54,57 @@ def evaluate(gold_file, prediction_file):
 def main():
     import argparse
 
-    parser = argparse.ArgumentParser(description='Evaluate leaderboard predictions for questions.')
+    parser = argparse.ArgumentParser(
+        description="Evaluate leaderboard predictions for questions."
+    )
 
     parser.add_argument(
-        '--question_answers', '-qa',
-        help='Filename of the question answers to read..',
-        required=True)
+        "--question_answers",
+        "-qa",
+        help="Filename of the question answers to read..",
+        required=True,
+    )
     parser.add_argument(
-        '--predictions', '-p',
+        "--predictions",
+        "-p",
         help="Filename of the leaderboard predictions, text file with one label per-line",
-        required=True)
+        required=True,
+    )
     parser.add_argument(
-        '--output', '-o',
-        help='Output results to this file.',
-        required=True)
+        "--output", "-o", help="Output results to this file.", required=True
+    )
     parser.add_argument(
-        '--train_type', '-train_type',
-        help='The particular training data used.',
-        required=True)
+        "--train_type",
+        "-train_type",
+        help="The particular training data used.",
+        required=True,
+    )
 
     args = parser.parse_args()
 
-    valid_train_sets = set(["train_iid","train_uniform"])
+    valid_train_sets = set(["train_iid", "train_uniform"])
     if args.train_type not in valid_train_sets:
         raise ValueError(
-            'Training type must be from: %s' % ','.join(list(valid_train_sets))
+            "Training type must be from: %s" % ",".join(list(valid_train_sets))
         )
 
-    total_acc,start_acc,end_acc,story_em = evaluate(args.question_answers,args.predictions)
-    
-    with open(args.output,"wt",encoding="UTF-8") as output:
-        output.write(json.dumps(
-            {
-                "train_type": args.train_type,
-                "total_acc": total_acc,
-                "start_acc": start_acc,
-                "end_acc"  : end_acc,
-                "story_em" : story_em,
-            }
-        ))
+    total_acc, start_acc, end_acc, story_em = evaluate(
+        args.question_answers, args.predictions
+    )
+
+    with open(args.output, "wt", encoding="UTF-8") as output:
+        output.write(
+            json.dumps(
+                {
+                    "train_type": args.train_type,
+                    "total_acc": total_acc,
+                    "start_acc": start_acc,
+                    "end_acc": end_acc,
+                    "story_em": story_em,
+                }
+            )
+        )
+
 
 if __name__ == "__main__":
     main()
