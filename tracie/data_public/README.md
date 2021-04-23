@@ -1,7 +1,11 @@
-This directory contains the files `train_iid.jsonl`, `train_uniform.jsonl` (two
-versions of the training data that can be used), and `test.jsonl` (the
-different training sets refer to different splits based on a strict `iid` split
-and more balanced `uniform` split).
+This directory contains the training and test files for evaluating predictions,
+and a sample prediction file.
+
+The files `train_iid.jsonl` and `train_uniform.jsonl` are two versions of the
+training data that can be used. These two training sets refer to splits, based
+on a strict `iid` split and more balanced `uniform` split.
+
+The file `test.jsonl` has the test questions, without gold labels.
 
 Each example in these files looks like the following:
 
@@ -17,9 +21,7 @@ and consists of three fields:
 
 * `query` (or hypothesis)
 * `story` (or premise)
-* `gold_label` (the inference label)
-
-The gold labels in `test.jsonl` are hidden and replaced with `"-"`.
+* `gold_label` (the inference label; in `test.jsonl` this is hidden and replaced with `"-"`)
 
 The file `train_iid_predictions.txt` shows an example output file for the `iid`
 training split that can be used with the evaluator. 
