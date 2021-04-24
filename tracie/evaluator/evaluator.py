@@ -1,10 +1,26 @@
 import json
+import sys
 
 
-def evaluate(gold_file, prediction_file):
-    glines = [x.strip() for x in open(gold_file).readlines()]
-    plines = [x.strip() for x in open(prediction_file).readlines()]
-    assert len(glines) == len(plines), "Issue with evaluation file!"
+def evaluate(answer_file, prediction_file):
+    answer_by_id = {}
+    for line in open(answer_file).readlines():
+        struct = json.loads(line)
+        answer_by_id[struct["id"]] = struct
+
+    prediction_by_id = {}
+    for line in open(prediction_file).readlines():
+        struct = json.loads(line)
+        prediction_by_id[struct["id"]] = struct
+
+    answer_count = len(answer_by_id)
+    prediction_count = len(prediction_by_id)
+    if answer_count != prediction_count:
+        print(
+            f"Prediction count ({prediction_count}) doesn't match answer count ({answer_count})"
+        )
+        sys.exit(1)
+
     total = 0
     correct = 0
     total_start = 0
@@ -12,16 +28,24 @@ def evaluate(gold_file, prediction_file):
     total_end = 0
     correct_end = 0
     story_prediction_map = {}
-    for i, l in enumerate(glines):
-        obj = json.loads(glines[i])
-        hypothesis = obj["sentence1"] if "sentence1" in obj else obj["query"]
-        story = obj["sentence2"] if "sentence2" in obj else obj["story"]
-        label = obj["gold_label"]
+
+    for answer in answer_by_id.values():
+        answer_id = answer["id"]
+        prediction = prediction_by_id.get(answer_id, None)
+        if not prediction:
+            print(f"Prediction for id {answer_id} missing")
+            sys.exit(1)
+
+        hypothesis = answer["query"]
+        story = answer["story"]
+        answer_label = answer["label"]
+        prediction_label = prediction["label"]
+
         if story not in story_prediction_map:
             story_prediction_map[story] = []
-        prediction = plines[i]
+
         total += 1
-        if label == prediction:
+        if answer_label == prediction_label:
             correct += 1
             story_prediction_map[story].append(True)
         else:
@@ -29,11 +53,11 @@ def evaluate(gold_file, prediction_file):
 
         if "starts before" in hypothesis or "starts after" in hypothesis:
             total_start += 1
-            if label == prediction:
+            if answer_label == prediction_label:
                 correct_start += 1
         else:
             total_end += 1
-            if label == prediction:
+            if answer_label == prediction_label:
                 correct_end += 1
     s_total = 0
     s_correct = 0
@@ -61,13 +85,13 @@ def main():
     parser.add_argument(
         "--question_answers",
         "-qa",
-        help="Filename of the question answers to read..",
+        help="Filename of the question answers to read.",
         required=True,
     )
     parser.add_argument(
         "--predictions",
         "-p",
-        help="Filename of the leaderboard predictions, text file with one label per-line",
+        help="Filename of the leaderboard predictions",
         required=True,
     )
     parser.add_argument(
@@ -82,7 +106,7 @@ def main():
 
     args = parser.parse_args()
 
-    valid_train_sets = set(["train_iid", "train_uniform"])
+    valid_train_sets = {"train_iid", "train_uniform"}
     if args.train_type not in valid_train_sets:
         raise ValueError(
             "Training type must be from: %s" % ",".join(list(valid_train_sets))

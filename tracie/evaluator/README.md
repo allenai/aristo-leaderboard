@@ -5,19 +5,21 @@ This script evaluates NLI predictions against correct inferences and produces 4 
 ## Example
 
 ```sh
-% python3 evaluator/evaluator.py --question_answers data/train_iid.jsonl --predictions data/train_iid_predictions.txt  --output metrics.json --train_type train_iid
+% python3 evaluator/evaluator.py --question_answers data/train_iid.jsonl --predictions data/train_iid_predictions.jsonl --output metrics.json --train_type train_iid
 
 % cat metrics.json
 {"train_type": "train_iid", "total_acc": 0.5, "start_acc": 0.5, "end_acc": 0.5, "story_em": 0.0}
 ```
 
-This uses a dummy train prediction file called `train_iid_predictions.txt` from the training file `train_iid.jsonl` (which predicts entailments for each example), which consists of one label prediction for line:
+This uses a dummy prediction file called `train_iid_predictions.jsonl` which predicts entailments for each example in `train_iid.jsonl`:
 
 ```
-entailment
-entailment
-entailment
-entailment
+{"id":"tracie-train-iid-0000","label":"entailment"}
+{"id":"tracie-train-iid-0001","label":"entailment"}
+{"id":"tracie-train-iid-0002","label":"entailment"}
+{"id":"tracie-train-iid-0003","label":"entailment"}
+{"id":"tracie-train-iid-0004","label":"entailment"}
+...
 ```
 
 ## Output metrics
