@@ -1,9 +1,10 @@
 This directory contains the training and test files for evaluating predictions,
 and a sample prediction file.
 
-The files `train_iid.jsonl` and `train_uniform.jsonl` are two versions of the
-training data that can be used. These two training sets refer to splits, based
-on a strict `iid` split and more balanced `uniform` split.
+The files `train_uniform.jsonl` is the main training data to use for
+leaderboard entries (please note that in our paper, we also experiment
+with training on an `iid`set (not included here) _**which is not
+allowed when submiting to the leaderboard**). 
 
 The file `test.jsonl` has the test questions, without labels.
 
@@ -23,5 +24,5 @@ and consists of three fields:
 * `story` (or premise)
 * `label` (the inference label; this is absent in `test.jsonl`)
 
-The file `train_iid_predictions.jsonl` shows an example prediction file for the `iid`
-training split that can be evaluated against `train_iid.jsonl`.
+The file `predictions.jsonl` shows an example prediction file for the `uniform`
+training split that can be evaluated against `train_uniform.jsonl`.

@@ -5,20 +5,20 @@ This script evaluates NLI predictions against correct inferences and produces 4 
 ## Example
 
 ```sh
-% python3 evaluator/evaluator.py --question_answers data/train_iid.jsonl --predictions data/train_iid_predictions.jsonl --output metrics.json --train_type train_iid
+% python3 evaluator/evaluator.py --question_answers data/train_uniform.jsonl --predictions data/predictions.jsonl --output metrics.json 
 
 % cat metrics.json
-{"train_type": "train_iid", "total_acc": 0.5, "start_acc": 0.5, "end_acc": 0.5, "story_em": 0.0}
+{"total_acc": 0.5, "start_acc": 0.5, "end_acc": 0.5, "story_em": 0.0}
 ```
 
-This uses a dummy prediction file called `train_iid_predictions.jsonl` which predicts entailments for each example in `train_iid.jsonl`:
+This uses a dummy prediction file called `predictions.jsonl` which predicts entailments for each example in `train_uniform.jsonl`:
 
 ```
-{"id":"tracie-train-iid-0000","label":"entailment"}
-{"id":"tracie-train-iid-0001","label":"entailment"}
-{"id":"tracie-train-iid-0002","label":"entailment"}
-{"id":"tracie-train-iid-0003","label":"entailment"}
-{"id":"tracie-train-iid-0004","label":"entailment"}
+{"id":"tracie-train-uniform-0000","label":"entailment"}
+{"id":"tracie-train-uniform-0001","label":"entailment"}
+{"id":"tracie-train-uniform-0002","label":"entailment"}
+{"id":"tracie-train-uniform-0003","label":"entailment"}
+{"id":"tracie-train-uniform-0004","label":"entailment"}
 ...
 ```
 
@@ -36,5 +36,3 @@ In this file, here is what the fields mean:
 * `start_acc` is the accuracy of the subset of problems involving event `start` questions
 * `end_acc` is the subset involving end point questions
 * `story_em` is the accuracy of getting all questions correct per story
-* `train_type` is the particular training set used to obtain the result
-
