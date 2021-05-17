@@ -1,7 +1,7 @@
 This directory contains the training and test files for evaluating predictions,
 and a sample prediction file.
 
-The files `train_uniform.jsonl` is the main training data to use for
+The file `train_uniform.jsonl` is the main training data to use for
 leaderboard entries (please note that in our paper, we also experiment
 with training on an `iid` set (not included here) _**which is not
 allowed when submiting to the leaderboard**). 
