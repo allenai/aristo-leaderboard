@@ -97,12 +97,6 @@ def main():
     parser.add_argument(
         "--output", "-o", help="Output results to this file.", required=True
     )
-    # parser.add_argument(
-    #     "--train_type",
-    #     "-train_type",
-    #     help="The particular training data used.",
-    #     required=True,
-    # )
 
     args = parser.parse_args()
 
