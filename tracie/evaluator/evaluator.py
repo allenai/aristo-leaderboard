@@ -100,11 +100,6 @@ def main():
 
     args = parser.parse_args()
 
-    # valid_train_sets = {"train_iid", "train_uniform"}
-    # if args.train_type not in valid_train_sets:
-    #     raise ValueError(
-    #         "Training type must be from: %s" % ",".join(list(valid_train_sets))
-    #     )
 
     total_acc, start_acc, end_acc, story_em = evaluate(
         args.question_answers, args.predictions
