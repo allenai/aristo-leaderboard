@@ -7,13 +7,13 @@
 
 To evaluate your predictions, run the following (on a toy prediction file that
 guesses `entailment` for every train instance, called
-`train_iid_predictions.jsonl`). 
+`train_uniform_predictions.jsonl`). 
 
 ```sh
-% python3 evaluator/evaluator.py --question_answers data/train_iid.jsonl --predictions data/train_iid_predictions.jsonl --output metrics.json --train_type train_iid
+% python3 evaluator/evaluator.py --question_answers data/train_uniform.jsonl --predictions data/predictions.jsonl --output metrics.json 
 
 % cat metrics.json
-{"train_type": "train_iid", "total_acc": 0.5, "start_acc": 0.5, "end_acc": 0.5, "story_em": 0.0}
+{"total_acc": 0.5, "start_acc": 0.5, "end_acc": 0.5, "story_em": 0.0}
 ```
 
 For usage of the evaluator, see the [evaluator README](evaluator/).
