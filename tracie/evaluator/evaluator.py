@@ -109,7 +109,6 @@ def main():
         output.write(
             json.dumps(
                 {
-                    #"train_type": args.train_type,
                     "total_acc": total_acc,
                     "start_acc": start_acc,
                     "end_acc": end_acc,
